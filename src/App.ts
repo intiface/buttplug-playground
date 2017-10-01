@@ -16,7 +16,7 @@ import VibrationComponent from "./components/VibrationComponent/VibrationCompone
 export default class App extends Vue {
   private hasOpenedMenu: boolean = false;
   @Model()
-  private devices: Map<number, Device> = new Map<number, Device>();
+  private devices: Device[] = [];
   private vibratingDevices: Device[] = [];
   private launchDevices: Map<number, Device> = new Map<number, Device>();
 
@@ -41,14 +41,11 @@ export default class App extends Vue {
   }
 
   private OnDeviceConnected(aDevice: Device) {
-    this.devices.set(aDevice.Index, aDevice);
-    if (aDevice.AllowedMessages.indexOf("SingleMotorVibrateCmd") !== -1) {
-      this.vibratingDevices.push(aDevice);
-    }
+    this.devices.push(aDevice);
   }
 
   private OnDeviceDisconnected(aDevice: Device) {
-    this.devices.delete(aDevice.Index);
+    this.devices = this.devices.filter((device) => device.Index !== aDevice.Index);
   }
 
   private async OnVibrateChange(aDevice: Device, aPower: number) {

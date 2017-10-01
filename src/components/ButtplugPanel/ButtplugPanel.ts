@@ -31,21 +31,14 @@ export default class ButtplugPanel extends Vue {
 
   public async SendDeviceMessage(aDevice: Device, aMsg: ButtplugDeviceMessage) {
     if (this.buttplugClient === null) {
-      console.log("no client!");
       return;
     }
-    if (this.selectedDevices.find((device) => aDevice.Index === device.Index) === undefined) {
-      console.log(aDevice);
-      console.log("no device!");
+    if (!this.deviceSelected(aDevice)) {
       return;
     }
     if (aDevice.AllowedMessages.indexOf(aMsg.getType()) === -1) {
-      console.log("no message!");
       return;
     }
-    console.log("Sending message?");
-    console.log(aDevice);
-    console.log(aMsg);
     await this.buttplugClient.SendDeviceMessage(aDevice, aMsg);
   }
 
@@ -95,6 +88,10 @@ export default class ButtplugPanel extends Vue {
     await this.buttplugClient.StopScanning();
   }
 
+  private deviceSelected(aDevice: Device): boolean {
+    return this.selectedDevices.find((device) => aDevice.Index === device.Index) !== undefined;
+  }
+
   private async InitializeConnection(aButtplugClient: ButtplugClient) {
     aButtplugClient.addListener("close", this.Disconnect);
     aButtplugClient.addListener("log", this.AddLogMessage);
@@ -126,19 +123,25 @@ export default class ButtplugPanel extends Vue {
   }
 
   private OnSelectedDevicesChanged(aDeviceList: Device[]) {
-    // If a device is removed from selected devices, send a stop command to it.
-    for (const aDevice of aDeviceList) {
-      if (this.selectedDevices.indexOf(aDevice) === -1) {
-        this.$emit("deviceconnected", aDevice);
-      }
-    }
+    const newSelectedDevices: Device[] = [];
     for (const aDevice of this.selectedDevices) {
-      if (aDeviceList.indexOf(aDevice) !== -1 || this.buttplugClient === null) {
+      if (aDeviceList.find((device) => aDevice.Index === device.Index) !== undefined ||
+          this.buttplugClient === null) {
+        newSelectedDevices.push(aDevice);
         continue;
       }
-      this.buttplugClient.SendDeviceMessage(aDevice, new StopDeviceCmd()).catch((e) => console.log(e));
       this.$emit("devicedisconnected", aDevice);
+      // If a device is removed from selected devices, send a stop command to it.
+      this.buttplugClient.SendDeviceMessage(aDevice, new StopDeviceCmd()).catch((e) => console.log(e));
     }
-    this.selectedDevices = aDeviceList;
+
+    aDeviceList.map((aDevice) => {
+      if (this.deviceSelected(aDevice)) {
+        return;
+      }
+      newSelectedDevices.push(aDevice);
+      this.$emit("deviceconnected", aDevice);
+    });
+    this.selectedDevices = newSelectedDevices;
   }
 }

@@ -15,13 +15,13 @@
         </div>
       </header>
       <div id="playground-container">
-        <vibration-component
-          v-for="device of this.vibratingDevices"
-          :key="device.Index"
-          :device="device"
-          @vibratechange="OnVibrateChange"
-        >
-        </vibration-component>
+        <div v-for="device of this.devices">
+          <vibration-component
+            :key="device.Index"
+            :device="device"
+            @vibratechange="OnVibrateChange"
+          />
+        </div>
       </div>
       <md-sidenav
         layout="column"
