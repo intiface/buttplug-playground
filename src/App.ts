@@ -6,11 +6,13 @@ import { Component, Model } from "vue-property-decorator";
 import ButtplugPanelComponent from "./components/ButtplugPanel/ButtplugPanel.vue";
 import ButtplugPanel from "./components/ButtplugPanel/ButtplugPanel";
 import VibrationComponent from "./components/VibrationComponent/VibrationComponent.vue";
+import PositionComponent from "./components/PositionComponent/PositionComponent.vue";
 
 @Component({
   components: {
     ButtplugPanelComponent,
     VibrationComponent,
+    PositionComponent,
   },
 })
 export default class App extends Vue {

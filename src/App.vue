@@ -16,7 +16,13 @@
       </header>
       <div id="playground-container">
         <div v-for="device of this.devices">
+          <position-component
+            v-if="device.AllowedMessages.indexOf('FleshlightLaunchFW12Cmd') !== -1"
+            :key="device.Index"
+            :device="device"
+          />
           <vibration-component
+            v-if="device.AllowedMessages.indexOf('SingleMotorVibrateCmd') !== -1"
             :key="device.Index"
             :device="device"
             @vibratechange="OnVibrateChange"
@@ -251,5 +257,10 @@
  /* sc-component-id: sc-gqjmRU */
  .sc-gqjmRU {}
  .fFOxVX{width:0.75rem;height:1px;}
+
+.vue-slider {
+   margin-top: 20px;
+   margin-bottom: 20px;
+ }
 
 </style>
