@@ -7,6 +7,7 @@
                 @drag-start="OnDragStart"
                 @drag-end="OnDragEnd"
                 @callback="OnValueChanged"
+                :speed=".1"
                 @click="OnValueChanged" />
     <vue-slider ref="speedSlider"
                 :real-time="true"
@@ -14,6 +15,7 @@
                 @drag-start="OnDragStart"
                 @drag-end="OnDragEnd"
                 @callback="OnValueChanged"
+                :speed=".1"
                 @click="OnValueChanged" />
   </div>
 </template>

@@ -8,13 +8,15 @@
           </div>
           <div id="sidetab">
           </div>
-          <div ref="swipeStartText" id="swipe-start-text">Tap/Click Or Swipe Right</div>
         </div>
         <div ref="patreonButton" id="patreon-button">
           <div data-reactroot="" class="_2KV-widgets-shared--patreonWidgetWrapper"><a class="sc-bxivhb ffInCX" color="primary" type="button" href="https://www.patreon.com/bePatron?u=2860444&amp;redirect_uri=http%3A%2F%2Fbuttplug.world%2Ftest.html&amp;utm_medium=widget" role="button"><div class="sc-htpNat gdWQYu"><div class="sc-gzVnrw dJCpyC" display="flex" wrap="nowrap" direction="[object Object]"><div class="sc-dnqmqq llsQFn"><span class="sc-htoDjs fqfmvk"><svg viewBox="0 0 569 546" version="1.1" xmlns="http://www.w3.org/2000/svg"><title>Patreon logo</title><g><circle data-color="1" id="Oval" cx="362.589996" cy="204.589996" r="204.589996"></circle><rect data-color="2" id="Rectangle" x="0" y="0" width="100" height="545.799988"></rect></g></svg></span></div><div class="sc-gqjmRU fFOxVX" width="1.5"></div>Give us money</div></div></a></div>
         </div>
       </header>
       <div id="playground-container">
+        <div v-if="this.devices.length === 0" class="select-message">
+          <p>Click on the tab on the left or swipe right to connect to Buttplug and select a toy to test.</p>
+        </div>
         <div v-for="device of this.devices">
           <position-component
             v-if="device.AllowedMessages.indexOf('FleshlightLaunchFW12Cmd') !== -1"
@@ -258,9 +260,23 @@
  .sc-gqjmRU {}
  .fFOxVX{width:0.75rem;height:1px;}
 
-.vue-slider {
+ .vue-slider {
    margin-top: 20px;
    margin-bottom: 20px;
  }
 
+ .select-message {
+   display: flex;
+   height: 100vh;
+   align-items: center;
+   justify-content: center;
+   font-size: 25px;
+   width: 100%;
+ }
+
+ .select-message p {
+   width: 50%;
+   line-height: 120%;
+   text-align: center;
+ }
 </style>

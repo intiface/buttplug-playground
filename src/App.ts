@@ -24,7 +24,6 @@ export default class App extends Vue {
 
   private SideNavOpen() {
     if (!this.hasOpenedMenu) {
-      (this.$refs.swipeStartText as any).remove();
       this.hasOpenedMenu = true;
     }
     (this.$refs.leftSideNav as any).open();
@@ -36,7 +35,6 @@ export default class App extends Vue {
 
   private ToggleLeftSideNav() {
     if (!this.hasOpenedMenu) {
-      (this.$refs.swipeStartText as any).remove();
       this.hasOpenedMenu = true;
     }
     (this.$refs.leftSideNav as any).toggle();
