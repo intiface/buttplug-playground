@@ -6,17 +6,23 @@
                 v-model="positionValue"
                 @drag-start="OnDragStart"
                 @drag-end="OnDragEnd"
-                @callback="OnValueChanged"
-                :speed=".1"
-                @click="OnValueChanged" />
+                @callback="OnPositionValueChanged"
+                :speed=".1" />
     <vue-slider ref="speedSlider"
                 :real-time="true"
                 v-model="speedValue"
                 @drag-start="OnDragStart"
                 @drag-end="OnDragEnd"
-                @callback="OnValueChanged"
-                :speed=".1"
-                @click="OnValueChanged" />
+                @callback="OnSpeedValueChanged"
+                :speed=".1" />
+    <md-button ref="oscillate"
+               class="md-raised md-primary"
+               @click="OnOscillateClick"
+               v-if="!isOscillating">Start Oscillation</md-button>
+    <md-button ref="oscillate"
+               class="md-raised md-primary"
+               @click="OnOscillateClick"
+               v-if="isOscillating">Stop Oscillation</md-button>
   </div>
 </template>
 

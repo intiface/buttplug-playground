@@ -48,8 +48,7 @@ export default class App extends Vue {
     this.devices = this.devices.filter((device) => device.Index !== aDevice.Index);
   }
 
-  private async OnVibrateChange(aDevice: Device, aPower: number) {
-    await (this.$refs.buttplugPanel as ButtplugPanel).SendDeviceMessage(aDevice,
-                                                                        new SingleMotorVibrateCmd(aPower / 100.0));
+  private async OnDeviceMessage(aDevice: Device, aMessage: ButtplugDeviceMessage) {
+    await (this.$refs.buttplugPanel as ButtplugPanel).SendDeviceMessage(aDevice, aMessage);
   }
 }

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { Component, Prop, Watch, Model } from "vue-property-decorator";
-import { ButtplugMessage, Device } from "buttplug";
+import { ButtplugMessage, Device, SingleMotorVibrateCmd } from "buttplug";
 const vueSlider = require("vue-slider-component");
 
 @Component({
@@ -21,13 +21,13 @@ export default class VibrationComponent extends Vue {
 
   private OnDragEnd() {
     this.isDragging = false;
-    this.$emit("vibratechange", this.device, this.sliderValue);
+    this.$emit("devicemessage", this.device, new SingleMotorVibrateCmd(this.sliderValue / 100.0));
   }
 
   private OnValueChanged(endValue: number) {
     if (this.isDragging) {
       return;
     }
-    this.$emit("vibratechange", this.device, endValue);
+    this.$emit("devicemessage", this.device, new SingleMotorVibrateCmd(endValue / 100.0));
   }
 }

@@ -22,12 +22,13 @@
             v-if="device.AllowedMessages.indexOf('FleshlightLaunchFW12Cmd') !== -1"
             :key="device.Index"
             :device="device"
+            @devicemessage="OnDeviceMessage"
           />
           <vibration-component
             v-if="device.AllowedMessages.indexOf('SingleMotorVibrateCmd') !== -1"
             :key="device.Index"
             :device="device"
-            @vibratechange="OnVibrateChange"
+            @devicemessage="OnDeviceMessage"
           />
         </div>
       </div>
