@@ -21,8 +21,12 @@ export default class App extends Vue {
   private devices: Device[] = [];
   private vibratingDevices: Device[] = [];
   private launchDevices: Map<number, Device> = new Map<number, Device>();
+  private isDragging: boolean = false;
 
   private SideNavOpen() {
+    if (this.isDragging) {
+      return;
+    }
     if (!this.hasOpenedMenu) {
       this.hasOpenedMenu = true;
     }
@@ -30,6 +34,9 @@ export default class App extends Vue {
   }
 
   private SideNavClose() {
+    if (this.isDragging) {
+      return;
+    }
     (this.$refs.leftSideNav as any).close();
   }
 
@@ -50,5 +57,13 @@ export default class App extends Vue {
 
   private async OnDeviceMessage(aDevice: Device, aMessage: ButtplugDeviceMessage) {
     await (this.$refs.buttplugPanel as ButtplugPanel).SendDeviceMessage(aDevice, aMessage);
+  }
+
+  private OnDragStart() {
+    this.isDragging = true;
+  }
+
+  private OnDragStop() {
+    this.isDragging = false;
   }
 }

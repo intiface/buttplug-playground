@@ -17,10 +17,12 @@ export default class VibrationComponent extends Vue {
 
   private OnDragStart() {
     this.isDragging = true;
+    this.$emit("dragstart");
   }
 
   private OnDragEnd() {
     this.isDragging = false;
+    this.$emit("dragstop");
     this.$emit("devicemessage", this.device, new SingleMotorVibrateCmd(this.sliderValue / 100.0));
   }
 

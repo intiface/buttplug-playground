@@ -23,12 +23,16 @@
             :key="device.Index"
             :device="device"
             @devicemessage="OnDeviceMessage"
+            @dragstart="OnDragStart"
+            @dragstop="OnDragStop"
           />
           <vibration-component
             v-if="device.AllowedMessages.indexOf('SingleMotorVibrateCmd') !== -1"
             :key="device.Index"
             :device="device"
             @devicemessage="OnDeviceMessage"
+            @dragstart="OnDragStart"
+            @dragstop="OnDragStop"
           />
         </div>
       </div>

@@ -24,10 +24,12 @@ export default class PositionComponent extends Vue {
 
   private OnDragStart() {
     this.isDragging = true;
+    this.$emit("dragstart");
   }
 
   private OnDragEnd() {
     this.isDragging = false;
+    this.$emit("dragstop");
   }
 
   private OnPositionValueChanged(endValue: number[]) {
