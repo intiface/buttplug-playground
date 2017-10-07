@@ -43,7 +43,7 @@
         ref="leftSideNav">
         <md-tabs md-centered>
           <md-tab md-label="Buttplug">
-            <buttplug-panel-component
+            <buttplug-panel
               ref="buttplugPanel"
               @deviceconnected="OnDeviceConnected"
               @devicedisconnected="OnDeviceDisconnected"

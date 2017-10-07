@@ -1,16 +1,14 @@
-import { ButtplugClient, ButtplugMessage, Device, Log, ButtplugDeviceMessage, StopAllDevices,
+import { ButtplugClient, ButtplugMessage, Device as BPDevice, Log, ButtplugDeviceMessage, StopAllDevices,
          SingleMotorVibrateCmd} from "buttplug";
 import Vue from "vue";
 import "vue-awesome/icons/bars";
 import { Component, Model } from "vue-property-decorator";
-import ButtplugPanelComponent from "./components/ButtplugPanel/ButtplugPanel.vue";
-import ButtplugPanel from "./components/ButtplugPanel/ButtplugPanel";
+import * as ButtplugPanel from "vue-buttplug-material-component";
 import VibrationComponent from "./components/VibrationComponent/VibrationComponent.vue";
 import PositionComponent from "./components/PositionComponent/PositionComponent.vue";
 
 @Component({
   components: {
-    ButtplugPanelComponent,
     VibrationComponent,
     PositionComponent,
   },
@@ -18,9 +16,9 @@ import PositionComponent from "./components/PositionComponent/PositionComponent.
 export default class App extends Vue {
   private hasOpenedMenu: boolean = false;
   @Model()
-  private devices: Device[] = [];
-  private vibratingDevices: Device[] = [];
-  private launchDevices: Map<number, Device> = new Map<number, Device>();
+  private devices: BPDevice[] = [];
+  private vibratingDevices: BPDevice[] = [];
+  private launchDevices: Map<number, BPDevice> = new Map<number, BPDevice>();
   private isDragging: boolean = false;
 
   private SideNavOpen() {
@@ -47,16 +45,16 @@ export default class App extends Vue {
     (this.$refs.leftSideNav as any).toggle();
   }
 
-  private OnDeviceConnected(aDevice: Device) {
+  private OnDeviceConnected(aDevice: BPDevice) {
     this.devices.push(aDevice);
   }
 
-  private OnDeviceDisconnected(aDevice: Device) {
+  private OnDeviceDisconnected(aDevice: BPDevice) {
     this.devices = this.devices.filter((device) => device.Index !== aDevice.Index);
   }
 
-  private async OnDeviceMessage(aDevice: Device, aMessage: ButtplugDeviceMessage) {
-    await (this.$refs.buttplugPanel as ButtplugPanel).SendDeviceMessage(aDevice, aMessage);
+  private async OnDeviceMessage(aDevice: BPDevice, aMessage: ButtplugDeviceMessage) {
+    //await (this.$refs.buttplugPanel as ButtplugPanel.ButtplugPanelType).SendDeviceMessage(aDevice, aMessage);
   }
 
   private OnDragStart() {
