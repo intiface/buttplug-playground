@@ -17,7 +17,7 @@
     "pretest": "yarn build:main"
   },
   "dependencies": {
-    "buttplug": "^0.1.0",
+    "buttplug": "^0.1.1",
     "nouislider": "^10.1.0",
     "tslint": "^5.5.0",
     "viewport-units-buggyfill": "^0.6.1",
