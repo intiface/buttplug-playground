@@ -21,9 +21,9 @@
     "nouislider": "^10.1.0",
     "tslint": "^5.5.0",
     "viewport-units-buggyfill": "^0.6.1",
-    "vue": "^2.3.3",
+    "vue": "^2.4.4",
     "vue-awesome": "^2.3.1",
-    "vue-buttplug-material-component": "^0.0.1",
+    "vue-buttplug-material-component": "^0.0.2",
     "vue-material": "^0.7.4",
     "vue-slider-component": "^2.4.1",
     "vue-touch": "next"
@@ -43,7 +43,7 @@
     "url-loader": "^0.5.9",
     "vue-loader": "^13.0.5",
     "vue-property-decorator": "^5.1.1",
-    "vue-template-compiler": "^2.3.3",
+    "vue-template-compiler": "^2.4.4",
     "webpack": "^3.5.5",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.5.1"

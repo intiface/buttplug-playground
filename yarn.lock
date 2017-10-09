@@ -4072,9 +4072,9 @@ vue-awesome@^2.3.1:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/vue-awesome/-/vue-awesome-2.3.3.tgz#e83f976fe5c7f86d207c24ca33731bdc6e9906a9"
 
-vue-buttplug-material-component@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/vue-buttplug-material-component/-/vue-buttplug-material-component-0.0.1.tgz#33c192f245b716c06d9b2668d5b177ba6b313a7c"
+vue-buttplug-material-component@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/vue-buttplug-material-component/-/vue-buttplug-material-component-0.0.2.tgz#776dc7a7373256a9f00723e1538ea1e9b4fef657"
 
 vue-class-component@^5.0.0:
   version "5.0.2"
@@ -4124,7 +4124,7 @@ vue-style-loader@^3.0.0:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.3.3:
+vue-template-compiler@^2.4.4:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.4.4.tgz#2cde3b704124985c27d50b5387c9691ba515fb57"
   dependencies:
@@ -4144,7 +4144,7 @@ vue-touch@next:
     rollup-plugin-commonjs "^7.0.0"
     rollup-plugin-node-resolve "^2.0.0"
 
-vue@^2.3.3:
+vue@^2.4.4:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.4.4.tgz#ea9550b96a71465fd2b8b17b61673b3561861789"
 

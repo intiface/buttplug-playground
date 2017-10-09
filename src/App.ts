@@ -53,7 +53,7 @@ export default class App extends Vue {
   }
 
   private async OnDeviceMessage(aDevice: Device, aMessage: ButtplugDeviceMessage) {
-    (Vue as any).SendButtplugDeviceMessage(aDevice, aMessage);
+    (Vue as any).Buttplug.SendDeviceMessage(aDevice, aMessage);
   }
 
   private OnDragStart() {
