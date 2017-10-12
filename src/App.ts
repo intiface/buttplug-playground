@@ -5,11 +5,13 @@ import "vue-awesome/icons/bars";
 import { Component, Model } from "vue-property-decorator";
 import VibrationComponent from "./components/VibrationComponent/VibrationComponent.vue";
 import PositionComponent from "./components/PositionComponent/PositionComponent.vue";
+import RotationComponent from "./components/RotationComponent/RotationComponent.vue";
 
 @Component({
   components: {
     VibrationComponent,
     PositionComponent,
+    RotationComponent,
   },
 })
 export default class App extends Vue {
