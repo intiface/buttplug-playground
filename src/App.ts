@@ -16,7 +16,6 @@ import RotationComponent from "./components/RotationComponent/RotationComponent.
 })
 export default class App extends Vue {
   private hasOpenedMenu: boolean = false;
-  @Model()
   private devices: Device[] = [];
   private vibratingDevices: Device[] = [];
   private launchDevices: Map<number, Device> = new Map<number, Device>();

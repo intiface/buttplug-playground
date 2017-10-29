@@ -11,7 +11,6 @@ const vueSlider = require("vue-slider-component");
 export default class VibrationComponent extends Vue {
   @Prop()
   private device: Device;
-  @Model()
   private sliderValue: number = 0;
   private isDragging: boolean = false;
 
