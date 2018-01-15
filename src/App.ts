@@ -1,5 +1,5 @@
 import { ButtplugClient, ButtplugMessage, Device, Log, ButtplugDeviceMessage, StopAllDevices,
-         SingleMotorVibrateCmd} from "buttplug";
+         SingleMotorVibrateCmd } from "buttplug";
 import Vue from "vue";
 import "vue-awesome/icons/bars";
 import { Component, Model } from "vue-property-decorator";
