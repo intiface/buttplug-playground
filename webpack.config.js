@@ -94,12 +94,12 @@ if (process.env.NODE_ENV === 'production') {
       sourceMap: true,
       uglifyOptions: {
         mangle: {
-          keep_classnames: true,
-          keep_fnames: true
+          keep_fnames: true,
+          keep_classnames: true
         },
         compress: {
           keep_fnames: true,
-          warnings: false
+          keep_classnames: true
         }
       }
     }),
