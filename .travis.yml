@@ -19,6 +19,6 @@ addons:
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -r --quiet --delete-after index.html dist/build.js buttplugworld@buttplug.world:/home/buttplugworld/beta.buttplug.world/playground
+  script: rsync -r --quiet --delete-after index.html dist buttplugworld@buttplug.world:/home/buttplugworld/beta.buttplug.world/playground
   on:
     branch: master
