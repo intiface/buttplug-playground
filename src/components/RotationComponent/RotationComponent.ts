@@ -10,7 +10,7 @@ const vueSlider = require("vue-slider-component");
 })
 export default class RotationComponent extends Vue {
   @Prop()
-  private device: Device;
+  private device!: Device;
   @Model()
   private sliderValue: number = 0;
   private isDragging: boolean = false;

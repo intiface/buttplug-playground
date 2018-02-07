@@ -10,7 +10,7 @@ const vueSlider = require("vue-slider-component");
 })
 export default class PositionComponent extends Vue {
   @Prop()
-  private device: Device;
+  private device!: Device;
   @Model()
   private positionValue: number[] = [10, 90];
   @Model()
