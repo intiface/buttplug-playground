@@ -14,7 +14,8 @@
     "tslint:fix": "tslint -c tslint.json --fix semicolon,comma,no-var-keyword,ordered-imports 'src/**/*.ts' 'tests/**/*.ts'",
     "webpack-defaults": "webpack-defaults",
     "build:main": "tsc -p tsconfig.json",
-    "pretest": "yarn build:main"
+    "pretest": "yarn build:main",
+    "deploy": "trash deploy && mkdir -p deploy && cp index.html deploy && cp -r dist deploy"
   },
   "dependencies": {
     "buttplug": "^0.6.0",
@@ -35,6 +36,8 @@
     "file-loader": "^1.1.6",
     "noop-loader": "^1.0.0",
     "null-loader": "^0.1.1",
+    "trash": "^4.2.1",
+    "trash-cli": "^1.4.0",
     "ts-loader": "^3.4.0",
     "ts-node": "^4.1.0",
     "typescript": "^2.7.1",

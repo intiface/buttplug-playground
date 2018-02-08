@@ -7,6 +7,7 @@ install:
 script:
   - yarn tslint
   - yarn build
+  - yarn deploy
 cache: yarn
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_8d7484616f6a_key -iv $encrypted_8d7484616f6a_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
@@ -17,8 +18,19 @@ addons:
   ssh_known_hosts:
     - buttplug.world
 deploy:
-  provider: script
-  skip_cleanup: true
-  script: rsync -r --quiet --delete-after index.html dist buttplugworld@buttplug.world:/home/buttplugworld/beta.buttplug.world/playground
-  on:
-    branch: master
+  - provider: script
+    skip-cleanup: true
+    script: rsync -r --quiet --delete-after deploy/* buttplugworld@buttplug.world:/home/buttplugworld/buttplug.world/playground
+    on:
+      branch: release
+  - provider: script
+    skip-cleanup: true
+    script: rsync -r --quiet --delete-after deploy/* buttplugworld@buttplug.world:/home/buttplugworld/beta.buttplug.world/playground
+    on:
+      branch: beta
+  - provider: pages
+    skip-cleanup: true
+    local-dir: deploy
+    github-token: $GITHUB_TOKEN
+    on:
+      branch: master
