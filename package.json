@@ -18,7 +18,7 @@
     "deploy": "trash deploy && mkdir -p deploy && cp index.html deploy && cp -r dist deploy"
   },
   "dependencies": {
-    "buttplug": "^0.6.0",
+    "buttplug": "^0.6.1",
     "nouislider": "^11.0.3",
     "tslint": "^5.9.1",
     "viewport-units-buggyfill": "^0.6.2",
