@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "buttplug": "^0.6.1",
+    "matomo-tracker": "^2.2.0",
     "nouislider": "^11.0.3",
     "tslint": "^5.9.1",
     "viewport-units-buggyfill": "^0.6.2",
