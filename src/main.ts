@@ -4,7 +4,7 @@ const Icon = require("vue-awesome/components/Icon");
 const VueMaterial = require("vue-material");
 const VueTouch = require("vue-touch");
 import * as ButtplugPanel from "vue-buttplug-material-component";
-const MatomoTracker = require('matomo-tracker');
+const MatomoTracker = require("matomo-tracker");
 
 // Initialize with your site ID and Matomo URL
 const matomo = new MatomoTracker(12, "https://apps.nonpolynomial.com/p/js/", true);
