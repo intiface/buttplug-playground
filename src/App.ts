@@ -3,9 +3,9 @@ import { ButtplugClient, ButtplugMessage, Device, Log, ButtplugDeviceMessage, St
 import Vue from "vue";
 import "vue-awesome/icons/bars";
 import { Component, Model } from "vue-property-decorator";
-import VibrationComponent from "./components/VibrationComponent/VibrationComponent.vue";
-import PositionComponent from "./components/PositionComponent/PositionComponent.vue";
-import RotationComponent from "./components/RotationComponent/RotationComponent.vue";
+import VibrationComponent from "./components/VibrationComponent/VibrationComponent";
+import PositionComponent from "./components/PositionComponent/PositionComponent";
+import RotationComponent from "./components/RotationComponent/RotationComponent";
 
 @Component({
   components: {

@@ -1,6 +1,8 @@
 'use strict';
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
@@ -23,28 +25,35 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        exclude: /node_modules|vue\/src|tests/,
-        loader: 'ts-loader',
-        options: {
-          appendTsSuffixTo: [/\.vue$/]
-        }
+        exclude: /node_modules|vue\/src|tests|example/,
+        use: [{
+          loader: 'ts-loader',
+          options: {
+            appendTsSuffixTo: [/\.vue$/],
+            transpileOnly: true
+          }
+        }]
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            esModule: true
+        use: [{
+          loader:'vue-loader',
+          options: {
+            loaders: {
+              esModule: true
+            }
           }
-        }
+        }]
       },
       {
         test: /\.(png|jpg|gif|svg|eot|woff|woff2)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 100000,
-          name: '[name].[ext]?[hash]'
-        }
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 100000,
+            name: '[name].[ext]?[hash]'
+          }
+        }]
       },
       {
         test: /\.css$/,
@@ -74,6 +83,11 @@ module.exports = {
   devtool: '#eval-source-map',
   plugins: [
     new webpack.NamedModulesPlugin(),
+    new VueLoaderPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      tslint: true,
+      vue: true
+    }),
   ],
   node: {
     fs: 'empty'

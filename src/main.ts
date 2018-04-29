@@ -1,7 +1,7 @@
 import Vue from "vue";
-import App from "./App.vue";
-const Icon = require("vue-awesome/components/Icon");
+import App from "./App";
 const VueMaterial = require("vue-material");
+const Icon = require("vue-awesome/components/Icon");
 const VueTouch = require("vue-touch");
 import * as ButtplugPanel from "vue-buttplug-material-component";
 const MatomoTracker = require("matomo-tracker");
