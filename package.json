@@ -5,12 +5,12 @@
   "author": "Kyle Machulis <kyle@machul.is>",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --open --hot --mode=development",
-    "start:remote": "webpack-dev-server --open --hot --host 192.168.123.3 --mode=development",
-    "start:secure": "webpack-dev-server --open --hot --https --mode=development",
-    "start:remote:secure": "webpack-dev-server --mode=development --open --hot --https --host 192.168.123.3",
-    "build:dev": "webpack --progress --hide-modules --mode=development",
-    "build": "webpack --progress --hide-modules --mode=production --define process.env.NODE_ENV='production'",
+    "start": "webpack-dev-server --open --hot --config webpack.base.js",
+    "start:remote": "webpack-dev-server --open --hot --host 192.168.123.3 --config webpack.base.js",
+    "start:secure": "webpack-dev-server --open --hot --https --config webpack.base.js",
+    "start:remote:secure": "webpack-dev-server --open --hot --https --host 192.168.123.3 --config webpack.base.js",
+    "build:dev": "webpack --progress --hide-modules --config webpack.base.js",
+    "build": "webpack --progress --hide-modules --config webpack.production.js",
     "tslint": "tslint -c tslint.json 'src/**/*.ts' 'tests/**/*.ts'",
     "tslint:fix": "tslint -c tslint.json --fix semicolon,comma,no-var-keyword,ordered-imports 'src/**/*.ts' 'tests/**/*.ts'",
     "webpack-defaults": "webpack-defaults",
@@ -54,7 +54,8 @@
     "webpack": "^4.6.0",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.15",
-    "webpack-dev-server": "^3.1.3"
+    "webpack-dev-server": "^3.1.3",
+    "webpack-merge": "^4.1.2"
   },
   "pre-push": []
 }

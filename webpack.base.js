@@ -6,6 +6,7 @@ const { VueLoaderPlugin } = require('vue-loader');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+  mode: "development",
   stats: {
     assets: false,
     colors: true,
@@ -78,7 +79,6 @@ module.exports = {
   },
   devtool: '#eval-source-map',
   plugins: [
-    new webpack.NamedModulesPlugin(),
     new VueLoaderPlugin(),
     new ForkTsCheckerWebpackPlugin({
       tslint: true
@@ -88,32 +88,3 @@ module.exports = {
     fs: 'empty'
   }
 };
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map';
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new UglifyJSPlugin({
-      sourceMap: true,
-      uglifyOptions: {
-        mangle: {
-          keep_fnames: true,
-          keep_classnames: true
-        },
-        compress: {
-          keep_fnames: true,
-          keep_classnames: true
-        }
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ]);
-}
