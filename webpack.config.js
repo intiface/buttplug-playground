@@ -57,11 +57,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'css-loader'
-      },
-      {
-        test: /\.less$/,
-        loader: 'less-loader'
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -85,8 +81,7 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new VueLoaderPlugin(),
     new ForkTsCheckerWebpackPlugin({
-      tslint: true,
-      vue: true
+      tslint: true
     }),
   ],
   node: {

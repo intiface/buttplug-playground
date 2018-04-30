@@ -9,7 +9,8 @@
     "start:remote": "webpack-dev-server --open --hot --host 192.168.123.3 --mode=development",
     "start:secure": "webpack-dev-server --open --hot --https --mode=development",
     "start:remote:secure": "webpack-dev-server --mode=development --open --hot --https --host 192.168.123.3",
-    "build": "webpack --progress --hide-modules --mode=production",
+    "build:dev": "webpack --progress --hide-modules --mode=development",
+    "build": "webpack --progress --hide-modules --mode=production --define process.env.NODE_ENV='production'",
     "tslint": "tslint -c tslint.json 'src/**/*.ts' 'tests/**/*.ts'",
     "tslint:fix": "tslint -c tslint.json --fix semicolon,comma,no-var-keyword,ordered-imports 'src/**/*.ts' 'tests/**/*.ts'",
     "webpack-defaults": "webpack-defaults",
@@ -26,9 +27,9 @@
     "vue": "^2.5.16",
     "vue-awesome": "^3.0.0",
     "vue-buttplug-material-component": "^0.1.1",
-    "vue-material": "^1.0.0-beta-8",
     "vue-slider-component": "^2.6.2",
-    "vue-touch": "next"
+    "vue-touch": "next",
+    "vuetify": "^1.0.17"
   },
   "devDependencies": {
     "@types/node": "^9.6.7",
@@ -38,6 +39,7 @@
     "fork-ts-checker-webpack-plugin": "^0.4.1",
     "noop-loader": "^1.0.0",
     "null-loader": "^0.1.1",
+    "style-loader": "^0.21.0",
     "trash": "^4.3.0",
     "trash-cli": "^1.4.0",
     "ts-loader": "^4.2.0",

@@ -1,80 +1,89 @@
 <template>
-  <div id="app">
+  <v-app>
     <v-touch id="gesture-wrapper" v-on:swiperight="SideNavOpen" v-on:swipeleft="SideNavClose">
-      <header>
-        <div id="sidetab-aligner"  @click="ToggleLeftSideNav">
-          <div id="sidetab-arrow">
-            <md-icon>play_arrow</md-icon>
+      <v-container>
+        <header>
+          <div id="sidetab-aligner"  @click="ToggleLeftSideNav">
+            <div id="sidetab-arrow">
+              <v-icon color="white" class="playicon">play_arrow</v-icon>
+            </div>
+            <div id="sidetab">
+            </div>
           </div>
-          <div id="sidetab">
+          <div ref="patreonButton" id="patreon-button">
+            <div data-reactroot="" class="_2KV-widgets-shared--patreonWidgetWrapper"><a class="sc-bxivhb ffInCX" color="primary" type="button" href="https://www.patreon.com/bePatron?u=2860444&amp;redirect_uri=http%3A%2F%2Fbuttplug.world%2Ftest.html&amp;utm_medium=widget" role="button"><div class="sc-htpNat gdWQYu"><div class="sc-gzVnrw dJCpyC" display="flex" wrap="nowrap" direction="[object Object]"><div class="sc-dnqmqq llsQFn"><span class="sc-htoDjs fqfmvk"><svg viewBox="0 0 569 546" version="1.1" xmlns="http://www.w3.org/2000/svg"><title>Patreon logo</title><g><circle data-color="1" id="Oval" cx="362.589996" cy="204.589996" r="204.589996"></circle><rect data-color="2" id="Rectangle" x="0" y="0" width="100" height="545.799988"></rect></g></svg></span></div><div class="sc-gqjmRU fFOxVX" width="1.5"></div>Give us money</div></div></a></div>
           </div>
-        </div>
-        <div ref="patreonButton" id="patreon-button">
-          <div data-reactroot="" class="_2KV-widgets-shared--patreonWidgetWrapper"><a class="sc-bxivhb ffInCX" color="primary" type="button" href="https://www.patreon.com/bePatron?u=2860444&amp;redirect_uri=http%3A%2F%2Fbuttplug.world%2Ftest.html&amp;utm_medium=widget" role="button"><div class="sc-htpNat gdWQYu"><div class="sc-gzVnrw dJCpyC" display="flex" wrap="nowrap" direction="[object Object]"><div class="sc-dnqmqq llsQFn"><span class="sc-htoDjs fqfmvk"><svg viewBox="0 0 569 546" version="1.1" xmlns="http://www.w3.org/2000/svg"><title>Patreon logo</title><g><circle data-color="1" id="Oval" cx="362.589996" cy="204.589996" r="204.589996"></circle><rect data-color="2" id="Rectangle" x="0" y="0" width="100" height="545.799988"></rect></g></svg></span></div><div class="sc-gqjmRU fFOxVX" width="1.5"></div>Give us money</div></div></a></div>
-        </div>
-      </header>
-      <div id="playground-container">
-        <div v-if="this.devices.length === 0" class="select-message">
-          <p>Click on the tab on the left or swipe right to connect to Buttplug and select a toy to test.</p>
-        </div>
-        <div v-for="device of this.devices">
-          <position-component
-            v-if="device.AllowedMessages.indexOf('FleshlightLaunchFW12Cmd') !== -1"
-            :key="device.Index"
-            :device="device"
-            @devicemessage="OnDeviceMessage"
-            @dragstart="OnDragStart"
-            @dragstop="OnDragStop"
-          />
-          <vibration-component
-            v-if="device.AllowedMessages.indexOf('SingleMotorVibrateCmd') !== -1"
-            :key="device.Index"
-            :device="device"
-            @devicemessage="OnDeviceMessage"
-            @dragstart="OnDragStart"
-            @dragstop="OnDragStop"
-          />
-          <rotation-component
-            v-if="device.AllowedMessages.indexOf('VorzeA10CycloneCmd') !== -1"
-            :key="device.Index"
-            :device="device"
-            @devicemessage="OnDeviceMessage"
-            @dragstart="OnDragStart"
-            @dragstop="OnDragStop"
-          />
-        </div>
-      </div>
-      <md-sidenav
-        layout="column"
-        class="md-left"
-        id="leftSideNavElement"
-        ref="leftSideNav">
-        <md-tabs md-centered>
-          <md-tab md-label="Buttplug">
-            <buttplug-panel
-              ref="buttplugPanel"
-              @deviceconnected="OnDeviceConnected"
-              @devicedisconnected="OnDeviceDisconnected"
+        </header>
+        <div id="playground-container">
+          <div v-if="this.devices.length === 0" class="select-message">
+            <p>Click on the tab on the left or swipe right to connect to Buttplug and select a toy to test.</p>
+          </div>
+          <div v-for="device of this.devices">
+            <position-component
+              v-if="device.AllowedMessages.indexOf('FleshlightLaunchFW12Cmd') !== -1"
+              :key="device.Index"
+              :device="device"
+              @devicemessage="OnDeviceMessage"
+              @dragstart="OnDragStart"
+              @dragstop="OnDragStop"
             />
-          </md-tab>
-          <md-tab md-label="About">
-            <md-list class="md-double-line">
-              <md-list-item><b>Buttplug Playground Version 20170925</b></md-list-item>
-              <md-list-item><div class="md-list-text-container">Developed By<a href="https://metafetish.com">Metafetish</a></div></md-list-item>
-              <md-list-item><div class="md-list-text-container">Open Source!<a href="https://github.com/metafetish/buttplug-playground">Code available on Github</a></div></md-list-item>
-              <md-list-item><div class="md-list-text-container">We Like Money!<a href="https://patreon.com/qdot">Visit Our Patreon</a></div></md-list-item>
-            </md-list>
-          </md-tab>
-        </md-tabs>
-      </md-sidenav>
+            <vibration-component
+              v-if="device.AllowedMessages.indexOf('SingleMotorVibrateCmd') !== -1"
+              :key="device.Index"
+              :device="device"
+              @devicemessage="OnDeviceMessage"
+              @dragstart="OnDragStart"
+              @dragstop="OnDragStop"
+            />
+            <rotation-component
+              v-if="device.AllowedMessages.indexOf('VorzeA10CycloneCmd') !== -1"
+              :key="device.Index"
+              :device="device"
+              @devicemessage="OnDeviceMessage"
+              @dragstart="OnDragStart"
+              @dragstop="OnDragStop"
+            />
+          </div>
+        </div>
+        <v-navigation-drawer
+          temporary
+          absolute
+          v-model="menuOpened">
+          <v-tabs>
+            <v-tab href="#buttplugpanel">
+              Buttplug
+            </v-tab>
+            <v-tab href="#aboutpanel">
+              About
+            </v-tab>
+            <v-tabs-items>
+              <v-tab-item id="buttplugpanel">
+                <buttplug-panel
+                  ref="buttplugPanel"
+                  @deviceconnected="OnDeviceConnected"
+                  @devicedisconnected="OnDeviceDisconnected"
+                />
+              </v-tab-item>
+              <v-tab-item id="aboutpanel">
+                <v-list class="v-double-line">
+                  <v-list-tile><b>Buttplug Playground Version 20170925</b></v-list-tile>
+                  <v-list-tile><div>Developed By <a href="https://metafetish.com">Metafetish</a></div></v-list-tile>
+                  <v-list-tile><div>Open Source! <a href="https://github.com/metafetish/buttplug-playground">Code available on Github</a></div></v-list-tile>
+                  <v-list-tile><div>We Like Money! <a href="https://patreon.com/qdot">Visit Our Patreon</a></div></v-list-tile>
+                </v-list>
+              </v-tab-item>
+            </v-tabs-items>
+          </v-tabs>
+        </v-navigation-drawer>
+      </v-container>
     </v-touch>
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts" src="./App.ts">
 </script>
 
-<style src="vue-material/dist/vue-material.css"></style>
+<style src="vuetify/dist/vuetify.min.css"></style>
 
 <style lang="css">
  @font-face {
@@ -218,9 +227,6 @@
  }
 
  #sidetab-arrow {
-   color: #fff;
-   margin: auto;
-   text-align: right;
    z-index: 9999;
    cursor: pointer;
  }

@@ -3,9 +3,9 @@ import { ButtplugClient, ButtplugMessage, Device, Log, ButtplugDeviceMessage, St
 import Vue from "vue";
 import "vue-awesome/icons/bars";
 import { Component, Model } from "vue-property-decorator";
-import VibrationComponent from "./components/VibrationComponent/VibrationComponent";
-import PositionComponent from "./components/PositionComponent/PositionComponent";
-import RotationComponent from "./components/RotationComponent/RotationComponent";
+import VibrationComponent from "./components/VibrationComponent/VibrationComponent.vue";
+import PositionComponent from "./components/PositionComponent/PositionComponent.vue";
+import RotationComponent from "./components/RotationComponent/RotationComponent.vue";
 
 @Component({
   components: {
@@ -16,6 +16,7 @@ import RotationComponent from "./components/RotationComponent/RotationComponent"
 })
 export default class App extends Vue {
   private hasOpenedMenu: boolean = false;
+  private menuOpened: boolean = false;
   private devices: Device[] = [];
   private vibratingDevices: Device[] = [];
   private launchDevices: Map<number, Device> = new Map<number, Device>();
@@ -28,21 +29,21 @@ export default class App extends Vue {
     if (!this.hasOpenedMenu) {
       this.hasOpenedMenu = true;
     }
-    (this.$refs.leftSideNav as any).open();
+    this.menuOpened = true;
   }
 
   private SideNavClose() {
     if (this.isDragging) {
       return;
     }
-    (this.$refs.leftSideNav as any).close();
+    this.menuOpened = false;
   }
 
   private ToggleLeftSideNav() {
     if (!this.hasOpenedMenu) {
       this.hasOpenedMenu = true;
     }
-    (this.$refs.leftSideNav as any).toggle();
+    this.menuOpened = !this.menuOpened;
   }
 
   private OnDeviceConnected(aDevice: Device) {
