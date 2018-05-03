@@ -27,7 +27,7 @@
     "viewport-units-buggyfill": "^0.6.2",
     "vue": "^2.5.16",
     "vue-awesome": "^3.0.0",
-    "vue-buttplug-material-component": "^0.2.0",
+    "vue-buttplug-material-component": "^0.2.1",
     "vue-slider-component": "^2.6.2",
     "vue-touch": "next",
     "vuetify": "^1.0.17"
@@ -48,7 +48,7 @@
     "typescript": "^2.8.3",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
-    "vue-loader": "^15.0.6",
+    "vue-loader": "^15.0.7",
     "vue-property-decorator": "^6.0.0",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.6.0",
