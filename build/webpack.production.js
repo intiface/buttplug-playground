@@ -15,6 +15,7 @@ module.exports = merge(common, {
     new UglifyJSPlugin({
       sourceMap: true,
       parallel: true,
+      cache: true,
       uglifyOptions: {
         mangle: {
           keep_classnames: true,
@@ -23,7 +24,6 @@ module.exports = merge(common, {
         compress: {
           keep_fnames: true,
           keep_classnames: true,
-          warnings: true
         }
       }
     }),
