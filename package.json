@@ -20,7 +20,7 @@
     "deploy": "trash deploy && mkdir -p deploy && cp index.html deploy && cp -r dist deploy"
   },
   "dependencies": {
-    "buttplug": "^0.7.0",
+    "buttplug": "^0.7.1",
     "matomo-tracker": "^2.2.0",
     "nouislider": "^11.1.0",
     "tslint": "^5.9.1",
