@@ -6,6 +6,7 @@ import { Component, Model } from "vue-property-decorator";
 import VibrationComponent from "./components/VibrationComponent/VibrationComponent.vue";
 import PositionComponent from "./components/PositionComponent/PositionComponent.vue";
 import RotationComponent from "./components/RotationComponent/RotationComponent.vue";
+const AppConfig = require("../dist/appconfig.json");
 
 @Component({
   components: {
@@ -21,6 +22,7 @@ export default class App extends Vue {
   private vibratingDevices: Device[] = [];
   private launchDevices: Map<number, Device> = new Map<number, Device>();
   private isDragging: boolean = false;
+  private config: object = AppConfig;
 
   private SideNavOpen() {
     if (this.isDragging) {

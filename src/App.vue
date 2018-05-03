@@ -65,12 +65,14 @@
                 />
               </v-tab-item>
               <v-tab-item id="aboutpanel">
-                <v-list class="v-double-line">
-                  <v-list-tile><b>Buttplug Playground Version 20170925</b></v-list-tile>
-                  <v-list-tile><div>Developed By <a href="https://metafetish.com">Metafetish</a></div></v-list-tile>
-                  <v-list-tile><div>Open Source! <a href="https://github.com/metafetish/buttplug-playground">Code available on Github</a></div></v-list-tile>
-                  <v-list-tile><div>We Like Money! <a href="https://patreon.com/qdot">Visit Our Patreon</a></div></v-list-tile>
-                </v-list>
+                <p><b>Buttplug Playground</b></p>
+                <p>Version: <a :href="'https://github.com/metafetish/buttplug-playground/tree/' + config.build_commit">{{ config.build_commit }}</a></p>
+                <p>Updated: {{ config.build_date }}</p>
+                <p>Buttplug v{{ config.buttplug_version }}</p>
+                <p>Component v{{ config.component_version }}</p>
+                <p>Developed By <a href="https://metafetish.com">Metafetish</a></p>
+                <p>Open Source! <a href="https://github.com/metafetish/buttplug-playground">Code available on Github</a></p>
+                <p>We Like Money! <a href="https://patreon.com/qdot">Visit Our Patreon</a></p>
               </v-tab-item>
             </v-tabs-items>
           </v-tabs>
