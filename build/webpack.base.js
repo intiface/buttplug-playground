@@ -16,10 +16,10 @@ module.exports = {
     chunks: false,
     chunkModules: false
   },
-  entry: './src/main.ts',
+  entry: path.resolve('./src/main.ts'),
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    path: path.resolve('./dist'),
+    publicPath: './dist',
     filename: 'build.js'
   },
   module: {
