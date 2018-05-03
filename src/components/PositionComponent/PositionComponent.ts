@@ -11,10 +11,12 @@ const vueSlider = require("vue-slider-component");
 export default class PositionComponent extends Vue {
   @Prop()
   private device!: Device;
-  @Model()
+
+  // Not using property decorators for these models because we need to set up
+  // dragging.
   private positionValue: number[] = [10, 90];
-  @Model()
   private speedValue: number = 50;
+
   private isDragging: boolean = false;
   private isOscillating: boolean = false;
   private currentPosition: number = 0;
