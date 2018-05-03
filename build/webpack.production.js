@@ -5,8 +5,12 @@ const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge(common, {
-  mode: "none",
+  mode: "production",
   devtool: '#source-map',
+  // Turn off default minification, since it hoses buttplug.
+  optimization: {
+    minimize: false,
+  },
   plugins: [
     new UglifyJSPlugin({
       sourceMap: true,
