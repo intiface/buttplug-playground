@@ -13,4 +13,10 @@ const config = {
   component_version: vuecomponent.version
 };
 
-fs.writeFileSync(process.env.PWD + "/dist/appconfig.json", JSON.stringify(config));
+const dir = process.env.PWD + "/dist/";
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+
+fs.writeFileSync(dir + "appconfig.json", JSON.stringify(config));
