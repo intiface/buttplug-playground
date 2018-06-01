@@ -32,8 +32,6 @@
               :key="device.Index"
               :device="device"
               @devicemessage="OnDeviceMessage"
-              @dragstart="OnDragStart"
-              @dragstop="OnDragStop"
             />
             <rotation-component
               v-if="device.AllowedMessages.indexOf('VorzeA10CycloneCmd') !== -1"
