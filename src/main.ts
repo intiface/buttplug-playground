@@ -7,7 +7,7 @@ import * as ButtplugPanel from "vue-buttplug-material-component";
 const MatomoTracker = require("matomo-tracker");
 
 // Initialize with your site ID and Matomo URL
-const matomo = new MatomoTracker(12, "https://apps.nonpolynomial.com/p/js/", true);
+const matomo = new MatomoTracker(12, "https://matomo.nonpolynomial.com/", true);
 
 // Optional: Respond to tracking errors
 matomo.on("error", function(err: string) {
