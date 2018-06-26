@@ -28,16 +28,27 @@
               @dragstop="OnDragStop"
             />
             <vibration-component
-              v-if="device.AllowedMessages.indexOf('SingleMotorVibrateCmd') !== -1"
-              :key="device.Index"
+              v-if="device.AllowedMessages.indexOf('VibrateCmd') !== -1"
+              :key="device.Index + '-VibrateAll'"
               :device="device"
               @devicemessage="OnDeviceMessage"
               @dragstart="OnDragStart"
               @dragstop="OnDragStop"
             />
+            <div v-if="device.AllowedMessages.indexOf('VibrateCmd') !== -1 && device.MessageAttributes('VibrateCmd').FeatureCount > 1">
+              <vibration-component
+                v-for="vibratorIndex in device.MessageAttributes('VibrateCmd').FeatureCount"
+                :key="device.Index + '-Vibrate' + vibratorIndex"
+                :device="device"
+                :vibratorIndex="vibratorIndex - 1"
+                @devicemessage="OnDeviceMessage"
+                @dragstart="OnDragStart"
+                @dragstop="OnDragStop"
+              />
+            </div>
             <rotation-component
-              v-if="device.AllowedMessages.indexOf('VorzeA10CycloneCmd') !== -1"
-              :key="device.Index"
+              v-if="device.AllowedMessages.indexOf('RotateCmd') !== -1"
+              :key="device.Index + 'RotateAll'"
               :device="device"
               @devicemessage="OnDeviceMessage"
               @dragstart="OnDragStart"

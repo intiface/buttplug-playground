@@ -1,6 +1,9 @@
 <template>
   <div class="vibration">
-    <h2>{{ device.Name }} - Vibration Control</h2>
+    <h2>{{ device.Name }} - Vibration Control
+      <span v-if="vibratorIndex >= 0">- Motor {{ vibratorIndex }}</span>
+      <span v-if="vibratorIndex < 0">- All Motors</span>
+    </h2>
     <vue-slider ref="slider"
                 :real-time="true"
                 v-model="sliderValue"
