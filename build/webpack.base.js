@@ -19,7 +19,7 @@ module.exports = {
   entry: path.resolve('./src/main.ts'),
   output: {
     path: path.resolve('./dist'),
-    publicPath: './dist',
+    publicPath: '/dist/',
     filename: 'build.js'
   },
   module: {
@@ -72,7 +72,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    contentBase: '.'
   },
   performance: {
     hints: false
