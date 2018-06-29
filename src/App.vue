@@ -71,6 +71,7 @@
               <v-tab-item id="buttplugpanel">
                 <buttplug-panel
                   ref="buttplugPanel"
+                  @disconnected="OnClientDisconnect"
                   @deviceconnected="OnDeviceConnected"
                   @devicedisconnected="OnDeviceDisconnected"
                 />

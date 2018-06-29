@@ -48,6 +48,10 @@ export default class App extends Vue {
     this.menuOpened = !this.menuOpened;
   }
 
+  private OnClientDisconnect() {
+    this.devices = [];
+  }
+
   private OnDeviceConnected(aDevice: Device) {
     this.devices.push(aDevice);
   }
