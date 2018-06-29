@@ -20,8 +20,8 @@
           </div>
           <div v-for="device of this.devices">
             <position-component
-              v-if="device.AllowedMessages.indexOf('FleshlightLaunchFW12Cmd') !== -1"
-              :key="device.Index"
+              v-if="device.AllowedMessages.indexOf('LinearCmd') !== -1"
+              :key="device.Index + 'LinearAll'"
               :device="device"
               @devicemessage="OnDeviceMessage"
               @dragstart="OnDragStart"

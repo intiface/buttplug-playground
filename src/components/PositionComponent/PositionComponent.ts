@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { Component, Prop, Watch, Model } from "vue-property-decorator";
-import { ButtplugMessage, Device, FleshlightLaunchFW12Cmd } from "buttplug";
+import { ButtplugMessage, Device, FleshlightLaunchFW12Cmd, CreateSimpleLinearCmd } from "buttplug";
 const vueSlider = require("vue-slider-component");
 
 @Component({
@@ -14,15 +14,14 @@ export default class PositionComponent extends Vue {
 
   // Not using property decorators for these models because we need to set up
   // dragging.
+  private goalPositionIndex: number = 0;
   private positionValue: number[] = [10, 90];
-  private speedValue: number = 50;
+  private timeValue: number = 1.5;
 
   private isDragging: boolean = false;
   private isOscillating: boolean = false;
-  private currentPosition: number = 0;
   private goalPosition: number = 0;
   private goalTime: number = 0;
-  private isMovingUp: boolean = false;
 
   private OnDragStart() {
     this.isDragging = true;
@@ -41,19 +40,11 @@ export default class PositionComponent extends Vue {
     this.positionValue = endValue;
   }
 
-  private OnSpeedValueChanged(endValue: number) {
+  private OnTimeValueChanged(endValue: number) {
     if (this.isDragging) {
       return;
     }
-    this.speedValue = endValue;
-  }
-
-  // Speed = 25000 * (Duration * 90/Distance)^(-1.05)
-  // Duration = ((Speed / 25000) ^ (1/-1.05)) / (90/Distance)
-  private calculateCommandTiming() {
-    const positionDelta = Math.abs(this.currentPosition - this.goalPosition);
-    const timeDelta = Math.floor(Math.pow((this.speedValue / 25000), (1 / -1.05)) / (90.0 / positionDelta));
-    this.goalTime = Date.now() + timeDelta;
+    this.timeValue = endValue;
   }
 
   private onOscillationTick() {
@@ -67,17 +58,14 @@ export default class PositionComponent extends Vue {
         this.onOscillationTick();
         return;
       }
-      if (!this.isMovingUp) {
-        this.currentPosition = this.positionValue[1];
-        this.goalPosition = this.positionValue[0];
-        this.isMovingUp = true;
-      } else {
-        this.currentPosition = this.positionValue[0];
-        this.goalPosition = this.positionValue[1];
-        this.isMovingUp = false;
-      }
-      this.calculateCommandTiming();
-      this.$emit("devicemessage", this.device, new FleshlightLaunchFW12Cmd(this.speedValue, this.goalPosition));
+
+      this.$emit("devicemessage", this.device,
+                 CreateSimpleLinearCmd(this.device,
+                                       this.positionValue[this.goalPositionIndex] * 0.01,
+                                       this.timeValue * 1000));
+      // flip goal position index
+      this.goalPositionIndex ^= 1;
+      this.goalTime = Date.now() + (this.timeValue * 1000);
       this.onOscillationTick();
     });
   }
