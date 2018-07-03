@@ -705,9 +705,9 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
-buttplug@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/buttplug/-/buttplug-0.8.0.tgz#ab705bb5c29e6ee5224926b7806c41fa54fc255f"
+buttplug@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/buttplug/-/buttplug-0.8.1.tgz#7e64f79d86934ba251af7b7f9447352c47a54638"
   dependencies:
     "@tweenjs/tween.js" "^17.2.0"
     ajv "^6.5.1"
@@ -5530,9 +5530,9 @@ vue-awesome@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/vue-awesome/-/vue-awesome-3.0.3.tgz#1190cf87de74c2bd2b17c0ca2b713ff106875408"
 
-vue-buttplug-material-component@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/vue-buttplug-material-component/-/vue-buttplug-material-component-0.2.2.tgz#020dd62aa10afc6dd16472c094cb85308d644663"
+vue-buttplug-material-component@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/vue-buttplug-material-component/-/vue-buttplug-material-component-0.2.3.tgz#be84d48bfb12e152e82e12b2cdff06f61e5bf403"
   dependencies:
     vue-cookie "^1.1.4"
 
@@ -5607,9 +5607,9 @@ vue@^2.5.16:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 
-vuetify@^1.0.19:
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.0.19.tgz#fb6d123dd1c217795fc2333e912c0ecbed2ed69e"
+vuetify@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.1.1.tgz#8d8f64306a45aaf862487addae8decf082dac0a3"
 
 watchpack@^1.5.0:
   version "1.6.0"
@@ -5725,9 +5725,9 @@ webpack-sources@^1.0.1, webpack-sources@^1.1.0:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.13.0:
-  version "4.13.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.13.0.tgz#9a7bb953109a4079e4a32843610d2dc0184dfbe6"
+webpack@^4.14.0:
+  version "4.14.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.14.0.tgz#bbcc40dbf9a34129491b431574189d3802972243"
   dependencies:
     "@webassemblyjs/ast" "1.5.12"
     "@webassemblyjs/helper-module-context" "1.5.12"

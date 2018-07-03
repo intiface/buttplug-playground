@@ -20,16 +20,16 @@
     "deploy": "trash deploy && mkdir -p deploy && cp index.html deploy && cp -r dist deploy"
   },
   "dependencies": {
-    "buttplug": "^0.8.0",
+    "buttplug": "^0.8.1",
     "matomo-tracker": "^2.2.0",
     "tslint": "^5.10.0",
     "viewport-units-buggyfill": "^0.6.2",
     "vue": "^2.5.16",
     "vue-awesome": "^3.0.3",
-    "vue-buttplug-material-component": "^0.2.2",
+    "vue-buttplug-material-component": "^0.2.3",
     "vue-slider-component": "^2.7.2",
     "vue-touch": "next",
-    "vuetify": "^1.0.19"
+    "vuetify": "^1.1.1"
   },
   "devDependencies": {
     "@types/node": "^10.5.1",
@@ -50,7 +50,7 @@
     "vue-loader": "^15.2.4",
     "vue-property-decorator": "^7.0.0",
     "vue-template-compiler": "^2.5.16",
-    "webpack": "^4.13.0",
+    "webpack": "^4.14.0",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
