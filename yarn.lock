@@ -5149,9 +5149,9 @@ vue-awesome@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/vue-awesome/-/vue-awesome-3.0.3.tgz#1190cf87de74c2bd2b17c0ca2b713ff106875408"
 
-vue-buttplug-material-component@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/vue-buttplug-material-component/-/vue-buttplug-material-component-0.2.4.tgz#7e3fd7291c9a721e3ca53ba60b59a9184f190a8c"
+vue-buttplug-material-component@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/vue-buttplug-material-component/-/vue-buttplug-material-component-0.2.5.tgz#169318f7914b486b8994d5d5d2566cf5d23f0c29"
   dependencies:
     vue-cookie "^1.1.4"
 

@@ -26,7 +26,7 @@
     "viewport-units-buggyfill": "^0.6.2",
     "vue": "^2.5.16",
     "vue-awesome": "^3.0.3",
-    "vue-buttplug-material-component": "^0.2.4",
+    "vue-buttplug-material-component": "^0.2.5",
     "vue-slider-component": "^2.7.2",
     "vue-touch": "next",
     "vuetify": "^1.1.1"
