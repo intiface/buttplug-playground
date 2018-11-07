@@ -13,7 +13,7 @@ const config = {
   component_version: vuecomponent.version
 };
 
-const dir = process.env.PWD + "/dist/";
+const dir = __dirname + "/../dist/";
 
 if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
