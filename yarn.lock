@@ -725,10 +725,10 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
-buttplug@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/buttplug/-/buttplug-0.11.0.tgz#4c506f0a4387a985797722e23ca80319281fe323"
-  integrity sha512-V1rsCg402B76HwurYTPLQcBvdVWxM6eEsae4l1CG4kmd/neTbEw53MAsDBoH6YYhJO2SrJ1uritzptWuzs5Q6g==
+buttplug@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/buttplug/-/buttplug-0.11.1.tgz#9314cfdb7d8c7d97565348660a0f630f30a5624b"
+  integrity sha512-kEdYsjrfyPObkqUIdkz24l7mf+E2nzjz3zwjeoawFy/2V3K9aUVVxHKrc3fvsAzrGPuzvdG3+u1ctJKlZavikQ==
   dependencies:
     ajv "^6.10.0"
     class-transformer "^0.2.0"
@@ -5474,9 +5474,10 @@ vue-awesome@^3.4.0:
   resolved "https://registry.yarnpkg.com/vue-awesome/-/vue-awesome-3.4.0.tgz#4391edc847ed19da54b50567b0fc9ddaec01d670"
   integrity sha512-DzNdHa0bBfXrgtyMTk5d1jW2DqeKsXYL8AsIl/E1gTLTLz9LiOj7V1RnZRAMtx58uTwmvBxdIMntxzZGOfxgpw==
 
-vue-buttplug-material-component@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/vue-buttplug-material-component/-/vue-buttplug-material-component-0.2.5.tgz#169318f7914b486b8994d5d5d2566cf5d23f0c29"
+vue-buttplug-material-component@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/vue-buttplug-material-component/-/vue-buttplug-material-component-0.3.0.tgz#4b5c3873912fb6e037a930746fb194aeea005283"
+  integrity sha512-XdNXfPxMntG4QnnEzjddYLQCbiUYSkPRvCVGOxFTRM9dvN+9+1of591Bqs7uTeY9/PmREXxYu+VZuxTeakLcaw==
   dependencies:
     vue-cookie "^1.1.4"
 
