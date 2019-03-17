@@ -2,7 +2,7 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.base.js');
 const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(common, {
   mode: "production",
@@ -12,11 +12,10 @@ module.exports = merge(common, {
     minimize: false,
   },
   plugins: [
-    new UglifyJSPlugin({
+    new TerserPlugin({
       sourceMap: true,
       parallel: true,
-      cache: true,
-      uglifyOptions: {
+      terserOptions: {
         mangle: {
           keep_classnames: true,
           keep_fnames: true

@@ -1,5 +1,4 @@
-import { ButtplugClient, ButtplugMessage, Device, Log, ButtplugDeviceMessage, StopAllDevices,
-         SingleMotorVibrateCmd } from "buttplug";
+import { ButtplugClientDevice, Log, ButtplugDeviceMessage } from "buttplug";
 import Vue from "vue";
 import "vue-awesome/icons/bars";
 import { Component, Model } from "vue-property-decorator";
@@ -18,9 +17,9 @@ const AppConfig = require("../dist/appconfig.json");
 export default class App extends Vue {
   private hasOpenedMenu: boolean = false;
   private menuOpened: boolean = false;
-  private devices: Device[] = [];
-  private vibratingDevices: Device[] = [];
-  private launchDevices: Map<number, Device> = new Map<number, Device>();
+  private devices: ButtplugClientDevice[] = [];
+  private vibratingDevices: ButtplugClientDevice[] = [];
+  private launchDevices: Map<number, ButtplugClientDevice> = new Map<number, ButtplugClientDevice>();
   private isDragging: boolean = false;
   private config: object = AppConfig;
 
@@ -52,15 +51,15 @@ export default class App extends Vue {
     this.devices = [];
   }
 
-  private OnDeviceConnected(aDevice: Device) {
+  private OnDeviceConnected(aDevice: ButtplugClientDevice) {
     this.devices.push(aDevice);
   }
 
-  private OnDeviceDisconnected(aDevice: Device) {
+  private OnDeviceDisconnected(aDevice: ButtplugClientDevice) {
     this.devices = this.devices.filter((device) => device.Index !== aDevice.Index);
   }
 
-  private async OnDeviceMessage(aDevice: Device, aMessage: ButtplugDeviceMessage) {
+  private async OnDeviceMessage(aDevice: ButtplugClientDevice, aMessage: ButtplugDeviceMessage) {
     (Vue as any).Buttplug.SendDeviceMessage(aDevice, aMessage);
   }
 

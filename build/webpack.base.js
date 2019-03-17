@@ -3,7 +3,6 @@ const path = require('path');
 const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   mode: "development",

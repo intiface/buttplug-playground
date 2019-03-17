@@ -1,6 +1,6 @@
 import Vue from "vue";
-import { Component, Prop, Watch, Model } from "vue-property-decorator";
-import { ButtplugMessage, Device, FleshlightLaunchFW12Cmd, CreateSimpleLinearCmd } from "buttplug";
+import { Component, Prop } from "vue-property-decorator";
+import { ButtplugClientDevice } from "buttplug";
 const vueSlider = require("vue-slider-component");
 
 @Component({
@@ -10,7 +10,7 @@ const vueSlider = require("vue-slider-component");
 })
 export default class PositionComponent extends Vue {
   @Prop()
-  private device!: Device;
+  private device!: ButtplugClientDevice;
 
   // Not using property decorators for these models because we need to set up
   // dragging.
@@ -59,10 +59,8 @@ export default class PositionComponent extends Vue {
         return;
       }
 
-      this.$emit("devicemessage", this.device,
-                 CreateSimpleLinearCmd(this.device,
-                                       this.positionValue[this.goalPositionIndex] * 0.01,
-                                       this.timeValue * 1000));
+      this.device.SendLinearCmd(this.positionValue[this.goalPositionIndex] * 0.01, this.timeValue * 1000);
+
       // flip goal position index
       this.goalPositionIndex ^= 1;
       this.goalTime = Date.now() + (this.timeValue * 1000);

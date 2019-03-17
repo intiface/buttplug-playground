@@ -1,6 +1,6 @@
 import Vue from "vue";
-import { Component, Prop, Watch, Model } from "vue-property-decorator";
-import { ButtplugMessage, Device, VibrateCmd, SpeedSubcommand, CreateSimpleVibrateCmd } from "buttplug";
+import { Component, Prop } from "vue-property-decorator";
+import { ButtplugClientDevice, VibrateCmd } from "buttplug";
 const vueSlider = require("vue-slider-component");
 
 @Component({
@@ -10,7 +10,7 @@ const vueSlider = require("vue-slider-component");
 })
 export default class VibrationComponent extends Vue {
   @Prop()
-  private device!: Device;
+  private device!: ButtplugClientDevice;
 
   @Prop({ default: -1 })
   private vibratorIndex!: number;
@@ -23,15 +23,16 @@ export default class VibrationComponent extends Vue {
     this.$emit("dragstart");
   }
 
-  private FireVibrateCommand() {
+  private async FireVibrateCommand() {
     // If this is a slider for a specific feature, only address that.
-    if (this.vibratorIndex >= 0) {
-      this.$emit("devicemessage", this.device, new VibrateCmd(
-        [new SpeedSubcommand(this.vibratorIndex, this.sliderValue / 100.0)]));
-      return;
-    }
+    // if (this.vibratorIndex >= 0) {
+    //   this.$emit("devicemessage", this.device, new VibrateCmd(
+    //     [new SpeedSubcommand(this.vibratorIndex, this.sliderValue / 100.0)]));
+    //   return;
+    // }
     // Send to all motors
-    this.$emit("devicemessage", this.device, CreateSimpleVibrateCmd(this.device, this.sliderValue / 100.0));
+    // this.$emit("devicemessage", this.device, CreateSimpleVibrateCmd(this.device, this.sliderValue / 100.0));
+    await this.device.SendVibrateCmd(this.sliderValue / 100.0);
   }
 
   private OnDragEnd() {
@@ -40,10 +41,15 @@ export default class VibrationComponent extends Vue {
     this.FireVibrateCommand();
   }
 
-  private OnValueChanged(endValue: number) {
-    if (this.isDragging) {
-      return;
+  private async OnValueChanged(endValue: number) {
+    // if (this.isDragging) {
+    //   return;
+    // }
+    try {
+      await this.FireVibrateCommand();
+    } catch (e) {
+      console.log("Got exception back!");
+      console.log(e);
     }
-    this.FireVibrateCommand();
   }
 }
