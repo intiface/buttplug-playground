@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
-import { ButtplugClientDevice, VibrateCmd } from "buttplug";
+import {ButtplugClientDevice, SpeedSubcommand, VibrateCmd} from "buttplug";
 const vueSlider = require("vue-slider-component");
 
 @Component({
@@ -25,13 +25,13 @@ export default class VibrationComponent extends Vue {
 
   private async FireVibrateCommand() {
     // If this is a slider for a specific feature, only address that.
-    // if (this.vibratorIndex >= 0) {
-    //   this.$emit("devicemessage", this.device, new VibrateCmd(
-    //     [new SpeedSubcommand(this.vibratorIndex, this.sliderValue / 100.0)]));
-    //   return;
-    // }
+    if (this.vibratorIndex >= 0) {
+      await this.device.SendMessageAsync(new VibrateCmd(
+        [new SpeedSubcommand(this.vibratorIndex, this.sliderValue / 100.0)]));
+      return;
+    }
+
     // Send to all motors
-    // this.$emit("devicemessage", this.device, CreateSimpleVibrateCmd(this.device, this.sliderValue / 100.0));
     await this.device.SendVibrateCmd(this.sliderValue / 100.0);
   }
 
