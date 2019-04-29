@@ -130,7 +130,7 @@
    font-family: 'Material Icons';
    font-weight: normal;
    font-style: normal;
-ppp   font-size: 24px;  /* Preferred icon size */
+   font-size: 24px;  /* Preferred icon size */
    display: inline-block;
    line-height: 1;
    text-transform: none;
