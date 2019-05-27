@@ -68,7 +68,7 @@
               About
             </v-tab>
             <v-tabs-items>
-              <v-tab-item id="buttplugpanel">
+              <v-tab-item value="buttplugpanel">
                 <buttplug-panel
                   ref="buttplugPanel"
                   @disconnected="OnClientDisconnect"
@@ -76,7 +76,7 @@
                   @devicedisconnected="OnDeviceDisconnected"
                 />
               </v-tab-item>
-              <v-tab-item id="aboutpanel">
+              <v-tab-item value="aboutpanel">
                 <p><b>Buttplug Playground</b></p>
                 <p>Version: <a :href="'https://github.com/metafetish/buttplug-playground/tree/' + config.build_commit">{{ config.build_commit }}</a></p>
                 <p>Updated: {{ config.build_date }}</p>
