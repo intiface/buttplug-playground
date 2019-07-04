@@ -3,8 +3,8 @@ import Vuetify from "vuetify";
 import App from "./App.vue";
 const Icon = require("vue-awesome/components/Icon");
 const VueTouch = require("vue-touch");
-import * as ButtplugPanel from "vue-buttplug-material-component";
 const MatomoTracker = require("matomo-tracker");
+const VueShowdown = require("vue-showdown");
 
 // Initialize with your site ID and Matomo URL
 const matomo = new MatomoTracker(12, "https://matomo.nonpolynomial.com/piwik.php", true);
@@ -24,9 +24,14 @@ matomo.track({
 // Fix viewport scaling on iOS
 require("viewport-units-buggyfill").init();
 
+Vue.use(VueShowdown, {
+  options: {
+    emoji: true,
+  },
+});
+
 Vue.use(VueTouch);
 Vue.use(Vuetify);
-Vue.use(ButtplugPanel);
 Vue.component("icon", Icon);
 
 // tslint:disable-next-line no-unused-expression
