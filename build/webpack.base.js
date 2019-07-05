@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const VuetifyLoaderPlugin = require ('vuetify-loader/lib/plugin');
 
 module.exports = {
   mode: "development",
@@ -60,8 +61,12 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
+        test: /\.styl$/,
+        use: ['style-loader', 'css-loader', 'stylus-loader']
+      },
+      {
         test: /\.md$/,
-        use: ['raw-loader']
+        use: ['html-loader', 'markdown-loader']
       },
       {
         test: /\.(html)$/,
@@ -93,6 +98,7 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin({
       tslint: true
     }),
+    new VuetifyLoaderPlugin(),
   ],
   node: {
     fs: 'empty'
