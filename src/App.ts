@@ -1,12 +1,12 @@
-import { ButtplugClient, ButtplugClientDevice, Log, ButtplugDeviceMessage } from "buttplug";
+import { ButtplugClient, ButtplugClientDevice, ButtplugDeviceMessage } from "buttplug";
 import Vue from "vue";
 import "vue-awesome/icons/bars";
-import { Component, Model } from "vue-property-decorator";
+import { Component } from "vue-property-decorator";
 import VibrationComponent from "./components/VibrationComponent/VibrationComponent.vue";
 import PositionComponent from "./components/PositionComponent/PositionComponent.vue";
 import RotationComponent from "./components/RotationComponent/RotationComponent.vue";
 import ButtplugPanel from "vue-buttplug-material-component/src/ButtplugPanel.vue";
-import HelpText from "./help.md";
+import HelpText from "vue-buttplug-material-component/manual/manual.md";
 const AppConfig = require("../dist/appconfig.json");
 
 @Component({
@@ -25,12 +25,23 @@ export default class App extends Vue {
   private config: object = AppConfig;
   private helpText: string = HelpText;
 
+  public mounted() {
+    this.CreateNewClient();
+  }
+
+  private CreateNewClient() {
+    this.client = new ButtplugClient("Buttplug Playground");
+    this.client.addListener("disconnect", this.OnClientDisconnect);
+  }
+
   private ToggleDialog() {
     this.menuOpened = !this.menuOpened;
   }
 
   private OnClientDisconnect() {
     this.devices = [];
+    this.client.removeListener("disconnect", this.OnClientDisconnect);
+    this.CreateNewClient();
   }
 
   private OnSelectedDevicesChange(aDeviceList: ButtplugClientDevice[]) {
