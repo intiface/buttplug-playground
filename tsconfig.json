@@ -11,7 +11,8 @@
     "experimentalDecorators": true,
     "strictNullChecks": true,
     "noImplicitThis": true,
-    "outDir": "./dist/build"
+    "outDir": "./dist/build",
+    "types": ["node", "vuetify"]
   },
   "include": [
     "src/**/*.ts",
