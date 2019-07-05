@@ -15,6 +15,18 @@
         <v-divider class="top-divider">
         </v-divider>
         <v-flex
+          v-if="!this.client.Connected">
+          <h1>Not Connected.</h1>
+        </v-flex>
+        <v-flex
+          v-if="this.client.Connected && this.client.Devices.length === 0">
+          <h1>No Devices Connected.</h1>
+        </v-flex>
+        <v-flex
+          v-if="this.client.Connected && this.client.Devices.length !== 0 && this.devices.length === 0">
+          <h1>No Devices Activated.</h1>
+        </v-flex>
+        <v-flex
           v-for="device of this.devices"
           :key="device.Index">
           <position-component
@@ -69,18 +81,21 @@
           <v-toolbar-title>Buttplug Playground</v-toolbar-title>
         </v-toolbar>
         <v-layout column>
-          <v-tabs>
-            <v-tab href="#buttplugpanel">
-              Buttplug
+          <v-tabs class="fixed-tabs-bar">
+            <v-tab href="#intifacepanel">
+              Intiface
             </v-tab>
-            <v-tab-item value="buttplugpanel">
+            <v-tab href="#helppanel">
+              Help
+            </v-tab>
+            <v-tab href="#aboutpanel">
+              About
+            </v-tab>
+            <v-tab-item value="intifacepanel">
               <buttplug-panel
                 :client="client"
                 @selecteddeviceschange="OnSelectedDevicesChange"/>
             </v-tab-item>
-            <v-tab href="#aboutpanel">
-              About
-            </v-tab>
             <v-tab-item value="aboutpanel">
               <v-card flat class="about-card">
                 <p><b>Buttplug Playground</b></p>
@@ -93,12 +108,7 @@
                 <p>We Like Money! <a href="https://patreon.com/qdot">Visit Our Patreon</a></p>
               </v-card>
             </v-tab-item>
-            <v-tab href="#helppanel">
-              Help
-            </v-tab>
-            <v-tab-item value="helppanel" class="help-panel">
-              <VueShowdown :markdown="helpText">
-              </VueShowdown>
+            <v-tab-item value="helppanel" class="help-panel" v-html="helpText">
             </v-tab-item>
           </v-tabs>
         </v-layout>
@@ -267,6 +277,32 @@
 
  .help-panel {
    padding: 5px;
+ }
+
+ .help-panel img {
+   max-width: 90%;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+ .help-panel ul {
+   list-style: square outside;
+ }
+
+ .help-panel li {
+   display: list-item;
+ }
+
+ .help-panel h2, h3, h4 {
+   margin-top: 1em;
+ }
+
+ .fixed-tabs-bar .v-tabs__bar {
+   position: -webkit-sticky;
+   position: sticky;
+   top: 0;
+   z-index: 2;
  }
 </style>
 
