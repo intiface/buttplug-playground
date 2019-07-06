@@ -6,7 +6,9 @@ import VibrationComponent from "./components/VibrationComponent/VibrationCompone
 import PositionComponent from "./components/PositionComponent/PositionComponent.vue";
 import RotationComponent from "./components/RotationComponent/RotationComponent.vue";
 import ButtplugPanel from "vue-buttplug-material-component/src/ButtplugPanel.vue";
-import HelpText from "vue-buttplug-material-component/manual/manual.md";
+import ComponentHelpText from "vue-buttplug-material-component/manual/manual.md";
+import BpHelpText from "./manual/manual.md";
+import TocHelpText from "./manual/toc.md";
 const AppConfig = require("../dist/appconfig.json");
 
 @Component({
@@ -23,7 +25,7 @@ export default class App extends Vue {
   private devices: ButtplugClientDevice[] = [];
   private isDragging: boolean = false;
   private config: object = AppConfig;
-  private helpText: string = HelpText;
+  private helpText: string = TocHelpText + "\n" + ComponentHelpText + "\n" + BpHelpText;
 
   public mounted() {
     this.CreateNewClient();
