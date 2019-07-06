@@ -28,7 +28,8 @@
         </v-flex>
         <v-flex
           v-for="device of this.devices"
-          :key="device.Index">
+          :key="device.Index"
+          shrink>
           <position-component
             v-if="device.AllowedMessages.indexOf('LinearCmd') !== -1"
             :key="device.Index + 'LinearAll'"
