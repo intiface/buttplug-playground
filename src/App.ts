@@ -5,7 +5,6 @@ import { Component } from "vue-property-decorator";
 import VibrationComponent from "./components/VibrationComponent/VibrationComponent.vue";
 import PositionComponent from "./components/PositionComponent/PositionComponent.vue";
 import RotationComponent from "./components/RotationComponent/RotationComponent.vue";
-import ButtplugPanel from "vue-buttplug-material-component/src/ButtplugPanel.vue";
 import ComponentHelpText from "vue-buttplug-material-component/manual/manual.md";
 import BpHelpText from "./manual/manual.md";
 import TocHelpText from "./manual/toc.md";
@@ -16,7 +15,6 @@ const AppConfig = require("../dist/appconfig.json");
     VibrationComponent,
     PositionComponent,
     RotationComponent,
-    ButtplugPanel,
   },
 })
 export default class App extends Vue {

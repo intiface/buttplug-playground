@@ -26,7 +26,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        exclude: /node_modules|vue\/src|tests|example/,
+        exclude: /tests|example/,
         use: [{
           loader: 'ts-loader',
           options: {

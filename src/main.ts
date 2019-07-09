@@ -1,6 +1,10 @@
 import Vue from "vue";
+// use vuetify/lib, otherwise vue-loader won't optimize components at all.
 import Vuetify from "vuetify/lib";
 import App from "./App.vue";
+// Import vue-buttplug-material-component from the src, otherwise vue-loader
+// won't optimize the components correctly.
+import * as ButtplugPanel from "vue-buttplug-material-component/src";
 const Icon = require("vue-awesome/components/Icon");
 const MatomoTracker = require("matomo-tracker");
 
@@ -23,6 +27,7 @@ matomo.track({
 require("viewport-units-buggyfill").init();
 
 Vue.use(Vuetify);
+Vue.use(ButtplugPanel.install);
 Vue.component("icon", Icon);
 
 // tslint:disable-next-line no-unused-expression
