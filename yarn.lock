@@ -64,10 +64,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.2.tgz#3452a24edf9fea138b48fad4a0a028a683da1e40"
   integrity sha512-5tabW/i+9mhrfEOUcLDu2xBPsHJ+X5Orqy9FKpale3SjDA17j5AEpYq5vfy3oAeAHGcvANRCO3NV3d2D6q3NiA==
 
-"@types/node@^12.6.1":
-  version "12.6.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.1.tgz#d5544f6de0aae03eefbb63d5120f6c8be0691946"
-  integrity sha512-rp7La3m845mSESCgsJePNL/JQyhkOJA6G4vcwvVgkDAwHhGdq5GCumxmPjEk1MZf+8p5ZQAUE7tqgQRQTXN7uQ==
+"@types/node@^12.6.2":
+  version "12.6.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.2.tgz#a5ccec6abb6060d5f20d256fb03ed743e9774999"
+  integrity sha512-gojym4tX0FWeV2gsW4Xmzo5wxGjXGm550oVUII7f7G5o4BV6c7DBdiG1RRQd+y1bvqRyYtPfMK85UM95vsapqQ==
 
 "@vue/component-compiler-utils@^2.5.1":
   version "2.6.0"
@@ -683,10 +683,10 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
-buttplug@^0.11.7:
-  version "0.11.7"
-  resolved "https://registry.yarnpkg.com/buttplug/-/buttplug-0.11.7.tgz#b3d7f7b558a43243a7209c721cbf262d9d1d4cbc"
-  integrity sha512-+WO5RigoXImrpzzIrYjmSDN9XHgaYJXPtez+FxZ2aK5sNGft9Msn2hl00JYvQXedTMH7guVjIW8Mnre9+/YYWw==
+buttplug@^0.11.8:
+  version "0.11.8"
+  resolved "https://registry.yarnpkg.com/buttplug/-/buttplug-0.11.8.tgz#e2bf4bd169ae749b1ec30adde8ab78697a4cce51"
+  integrity sha512-280Upwx9mKMbhqS5DKPoychUJeP3TOABfek/MAuaWJkAZMQJ4WpSPtBZ/zsglD/NE2TgZ3LOCjQwY072d504Sg==
   dependencies:
     ajv "^6.10.0"
     class-transformer "^0.2.3"
