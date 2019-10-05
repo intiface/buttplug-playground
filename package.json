@@ -20,7 +20,7 @@
     "deploy": "trash deploy && mkdir -p deploy && cp index.html deploy && cp -r dist deploy"
   },
   "dependencies": {
-    "buttplug": "^0.12.0",
+    "buttplug": "^0.12.1",
     "matomo-tracker": "^2.2.1",
     "tslint": "^5.18.0",
     "viewport-units-buggyfill": "^0.6.2",
@@ -28,7 +28,7 @@
     "vue-awesome": "^3.5.4",
     "vue-slider-component": "~2.8.16",
     "vuetify": "^1.5.16",
-    "vue-buttplug-material-component": "^1.0.1"
+    "vue-buttplug-material-component": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "^12.6.8",
