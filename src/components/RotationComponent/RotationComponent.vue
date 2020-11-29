@@ -1,6 +1,6 @@
 <template>
   <div class="rotation">
-    <h2>{{ device.Name }} - Rotation Control</h2>
+    <h2>{{ device.name }} - Rotation Control</h2>
     <vue-slider ref="slider"
                 :real-time="true"
                 :min="-100"

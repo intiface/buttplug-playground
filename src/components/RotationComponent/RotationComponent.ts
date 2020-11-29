@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
-import { ButtplugClientDevice } from "buttplug";
+import { ButtplugClientDevice } from "buttplug-wasm";
 const vueSlider = require("vue-slider-component");
 
 @Component({
@@ -27,7 +27,7 @@ export default class RotationComponent extends Vue {
     // TODO We're gonna need to store multiple rotators into a local array now in order for this to work.
     //
     // If this is a slider for a specific feature, only address that.
-    this.device.SendRotateCmd([[Math.abs(this.sliderValue) / 100, this.sliderValue > 0]]);
+    this.device.rotate(Math.abs(this.sliderValue) / 100, this.sliderValue > 0);
   }
 
   private OnDragEnd() {

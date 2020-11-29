@@ -1,4 +1,4 @@
-import { ButtplugClient, ButtplugClientDevice, ButtplugDeviceMessage } from "buttplug";
+import { ButtplugClient, ButtplugClientDevice } from "buttplug-wasm";
 import Vue from "vue";
 import "vue-awesome/icons/bars";
 import { Component } from "vue-property-decorator";
@@ -18,19 +18,19 @@ const AppConfig = require("../dist/appconfig.json");
   },
 })
 export default class App extends Vue {
-  private client: ButtplugClient = new ButtplugClient("Buttplug Playground");
+  private client!: ButtplugClient;
   private menuOpened: boolean = true;
   private devices: ButtplugClientDevice[] = [];
   private isDragging: boolean = false;
   private config: object = AppConfig;
   private helpText: string = TocHelpText + "\n" + ComponentHelpText + "\n" + BpHelpText;
 
-  public mounted() {
-    this.CreateNewClient();
+  public async mounted() {
+    await this.CreateNewClient();
   }
 
-  private CreateNewClient() {
-    this.client = new ButtplugClient("Buttplug Playground");
+  private async CreateNewClient() {
+    this.client = await ButtplugClient.connectEmbedded();
     this.client.addListener("disconnect", this.OnClientDisconnect);
   }
 
@@ -38,18 +38,17 @@ export default class App extends Vue {
     this.menuOpened = !this.menuOpened;
   }
 
-  private OnClientDisconnect() {
+  private async OnClientDisconnect() {
     this.devices = [];
     this.client.removeListener("disconnect", this.OnClientDisconnect);
-    this.CreateNewClient();
+    await this.CreateNewClient();
   }
 
   private OnSelectedDevicesChange(aDeviceList: ButtplugClientDevice[]) {
     this.devices = aDeviceList;
-  }
-
-  private async OnDeviceMessage(aDevice: ButtplugClientDevice, aMessage: ButtplugDeviceMessage) {
-    (Vue as any).Buttplug.SendDeviceMessage(aDevice, aMessage);
+    if (this.devices.length > 0) {
+      console.log(this.devices[0]);
+    }
   }
 
   private OnDragStart() {

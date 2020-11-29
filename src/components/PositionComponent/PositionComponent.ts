@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
-import { ButtplugClientDevice } from "buttplug";
+import { ButtplugClientDevice } from "buttplug-wasm";
 const vueSlider = require("vue-slider-component");
 
 @Component({
@@ -48,7 +48,7 @@ export default class PositionComponent extends Vue {
   }
 
   private onOscillationTick() {
-    window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(async () => {
       if (!this.isOscillating) {
         return;
       }
@@ -58,8 +58,7 @@ export default class PositionComponent extends Vue {
         this.onOscillationTick();
         return;
       }
-
-      this.device.SendLinearCmd(this.positionValue[this.goalPositionIndex] * 0.01, this.timeValue * 1000);
+      await this.device.linear(this.timeValue * 1000, this.positionValue[this.goalPositionIndex] * 0.01);
 
       // flip goal position index
       this.goalPositionIndex ^= 1;
