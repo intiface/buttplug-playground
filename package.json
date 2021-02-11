@@ -45,8 +45,6 @@
     "style-loader": "^2.0.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^3",
-    "terser": "^5.5.1",
-    "terser-webpack-plugin": "^5.1.1",
     "trash": "^7.1.0",
     "trash-cli": "^4.0.0",
     "ts-loader": "^8.0.17",

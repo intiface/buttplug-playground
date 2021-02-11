@@ -2,7 +2,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const VuetifyLoaderPlugin = require ('vuetify-loader/lib/plugin');
 
@@ -100,7 +99,6 @@ const base = {
   devtool: '#eval-source-map',
   plugins: [
     new VueLoaderPlugin(),
-    new ForkTsCheckerWebpackPlugin({}),
     new VuetifyLoaderPlugin(),
   ],
   node: {
