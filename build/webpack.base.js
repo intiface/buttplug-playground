@@ -82,11 +82,6 @@ const base = {
   },
   resolve: {
     extensions: [".ts", ".js", ".vue"],
-    alias: {
-      'vue$': path.resolve('./node_modules/vue/dist/vue.esm.js'),
-      'vue-material$': path.resolve('./node_modules/vue-material/dist/vue-material.js'),
-      'buttplug$': path.resolve('./node_modules/buttplug/dist/main/src/index.js')
-    }
   },
   devServer: {
     historyApiFallback: true,
