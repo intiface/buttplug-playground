@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
-import {ButtplugClientDevice, VibrationCmd } from "buttplug-wasm";
+import {ButtplugClientDevice, VibrationCmd } from "buttplug";
 const vueSlider = require("vue-slider-component");
 
 @Component({

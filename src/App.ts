@@ -1,4 +1,4 @@
-import { ButtplugClient, ButtplugClientDevice, ButtplugDeviceMessageType } from "buttplug-wasm";
+import { ButtplugClient, ButtplugClientDevice, ButtplugDeviceMessageType } from "buttplug";
 import Vue from "vue";
 import "vue-awesome/icons/bars";
 import { Component } from "vue-property-decorator";

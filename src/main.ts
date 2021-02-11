@@ -2,7 +2,7 @@ import Vue from "vue";
 // use vuetify/lib, otherwise vue-loader won't optimize components at all.
 import Vuetify from "vuetify/lib";
 import App from "./App.vue";
-import { buttplugInit } from "buttplug-wasm";
+import { buttplugInit } from "buttplug";
 // Import vue-buttplug-material-component from the src, otherwise vue-loader
 // won't optimize the components correctly.
 // import * as ButtplugPanel from "vue-buttplug-material-component/src";

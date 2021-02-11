@@ -5,7 +5,7 @@ import {
          ButtplugClientDevice,
          ButtplugWebsocketConnectorOptions,
          ButtplugEmbeddedConnectorOptions,
-        } from "buttplug-wasm";
+        } from "buttplug";
 Vue.use(require("vue-cookies"));
 
 class ConnectionAddress {
