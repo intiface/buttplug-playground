@@ -1,8 +1,8 @@
 {
   "compilerOptions" : {
     "lib": ["es5", "ES2015", "ES2015.promise", "dom", "es6"],
-    "target": "es6",
-    "module": "es2015",
+    "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
     "sourceMap": true,

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
-import {ButtplugClientDevice} from "buttplug-wasm";
+import {ButtplugClientDevice, VibrationCmd } from "buttplug-wasm";
 const vueSlider = require("vue-slider-component");
 
 @Component({
@@ -26,7 +26,7 @@ export default class VibrationComponent extends Vue {
   private async FireVibrateCommand() {
     // If this is a slider for a specific feature, only address that.
     if (this.vibratorIndex >= 0) {
-      await this.device.vibrate([this.vibratorIndex, this.sliderValue / 100.0]);
+      await this.device.vibrate([new VibrationCmd(this.vibratorIndex, this.sliderValue / 100.0)]);
       return;
     }
 

@@ -1,11 +1,12 @@
 'use strict';
 const path = require('path');
 const webpack = require('webpack');
+const { merge } = require('webpack-merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const VuetifyLoaderPlugin = require ('vuetify-loader/lib/plugin');
 
-module.exports = {
+const base = {
   mode: "development",
   stats: {
     assets: false,
@@ -73,6 +74,10 @@ module.exports = {
         use: [{
           loader: 'html-loader'
         }]
+      },
+      {
+        test: /\.wasm$/,
+        type: "webassembly/experimental"
       }
     ]
   },
@@ -95,12 +100,30 @@ module.exports = {
   devtool: '#eval-source-map',
   plugins: [
     new VueLoaderPlugin(),
-    new ForkTsCheckerWebpackPlugin({
-      tslint: true
-    }),
+    new ForkTsCheckerWebpackPlugin({}),
     new VuetifyLoaderPlugin(),
   ],
   node: {
     fs: 'empty'
-  }
+  },
 };
+
+const production =   {
+  mode: "production",
+  optimization: {
+    minimize: true,
+    mangleWasmImports: false
+  },
+  devtool: '#source-map',
+};
+
+module.exports = env => {
+  switch(env) {
+    case 'development':
+      return base;
+    case 'production':
+      return merge(base, production);
+    default:
+      throw new Error('No matching configuration was found!');
+  }
+}

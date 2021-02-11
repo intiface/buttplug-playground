@@ -74,28 +74,22 @@
         </v-flex>
         <v-flex v-for="device of this.devices" :key="device.index" shrink>
           <position-component
-            v-if="device.allowedMessages.LinearCmd"
+            v-if="canLinear(device)"
             :key="device.index + 'LinearAll'"
             :device="device"
             @dragstart="OnDragStart"
             @dragstop="OnDragStop"
           />
           <vibration-component
-            v-if="device.allowedMessages.VibrateCmd"
+            v-if="canVibrate(device)"
             :key="device.index + '-VibrateAll'"
             :device="device"
             @dragstart="OnDragStart"
             @dragstop="OnDragStop"
           />
-          <div
-            v-if="
-              device.allowedMessages.VibrateCmd &&
-              device.allowedMessages.VibrateCmd.FeatureCount > 1
-            "
-          >
+          <div v-if="numVibrators(device) > 1">
             <vibration-component
-              v-for="vibratorIndex in device.allowedMessages.VibrateCmd
-                .FeatureCount"
+              v-for="vibratorIndex in numVibrators(device)"
               :key="device.index + '-Vibrate' + vibratorIndex"
               :device="device"
               :vibratorIndex="vibratorIndex - 1"
@@ -104,7 +98,7 @@
             />
           </div>
           <rotation-component
-            v-if="device.allowedMessages.RotateCmd"
+            v-if="canRotate(device)"
             :key="device.index + 'RotateAll'"
             :device="device"
             @dragstart="OnDragStart"

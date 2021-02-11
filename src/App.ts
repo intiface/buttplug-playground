@@ -1,13 +1,14 @@
-import { ButtplugClient, ButtplugClientDevice } from "buttplug-wasm";
+import { ButtplugClient, ButtplugClientDevice, ButtplugDeviceMessageType } from "buttplug-wasm";
 import Vue from "vue";
 import "vue-awesome/icons/bars";
 import { Component } from "vue-property-decorator";
 import VibrationComponent from "./components/VibrationComponent/VibrationComponent.vue";
 import PositionComponent from "./components/PositionComponent/PositionComponent.vue";
 import RotationComponent from "./components/RotationComponent/RotationComponent.vue";
-import ComponentHelpText from "vue-buttplug-material-component/manual/manual.md";
-import BpHelpText from "./manual/manual.md";
-import TocHelpText from "./manual/toc.md";
+import ButtplugPanel from "./components/ButtplugPanel/ButtplugPanel.vue";
+// import ComponentHelpText from "./components/ButtplugPanel/manual/manual.md";
+// import BpHelpText from "./components/ButtplugPanel/manual/manual.md";
+// import TocHelpText from "./components/ButtplugPanel/manual/toc.md";
 const AppConfig = require("../dist/appconfig.json");
 
 @Component({
@@ -15,22 +16,18 @@ const AppConfig = require("../dist/appconfig.json");
     VibrationComponent,
     PositionComponent,
     RotationComponent,
+    ButtplugPanel,
   },
 })
 export default class App extends Vue {
-  private client!: ButtplugClient;
+  private client: ButtplugClient = new ButtplugClient("Buttplug Playground");
   private menuOpened: boolean = true;
   private devices: ButtplugClientDevice[] = [];
   private isDragging: boolean = false;
   private config: object = AppConfig;
-  private helpText: string = TocHelpText + "\n" + ComponentHelpText + "\n" + BpHelpText;
+  private helpText: string = "help"; //TocHelpText + "\n" + ComponentHelpText + "\n" + BpHelpText;
 
   public async mounted() {
-    await this.CreateNewClient();
-  }
-
-  private async CreateNewClient() {
-    this.client = await ButtplugClient.connectEmbedded();
     this.client.addListener("disconnect", this.OnClientDisconnect);
   }
 
@@ -41,7 +38,8 @@ export default class App extends Vue {
   private async OnClientDisconnect() {
     this.devices = [];
     this.client.removeListener("disconnect", this.OnClientDisconnect);
-    await this.CreateNewClient();
+    this.client = new ButtplugClient("Buttplug Playground");
+    this.client.addListener("disconnect", this.OnClientDisconnect);
   }
 
   private OnSelectedDevicesChange(aDeviceList: ButtplugClientDevice[]) {
@@ -57,5 +55,25 @@ export default class App extends Vue {
 
   private OnDragStop() {
     this.isDragging = false;
+  }
+
+  private canVibrate(device: ButtplugClientDevice): boolean {
+    return device.messageAttributes(ButtplugDeviceMessageType.VibrateCmd) !== undefined;
+  }
+
+  private canRotate(device: ButtplugClientDevice): boolean {
+    return device.messageAttributes(ButtplugDeviceMessageType.RotateCmd) !== undefined;
+  }
+
+  private canLinear(device: ButtplugClientDevice): boolean {
+    return device.messageAttributes(ButtplugDeviceMessageType.LinearCmd) !== undefined;
+  }
+
+  private numVibrators(device: ButtplugClientDevice): number {
+    /*
+    if (device || !device.messageAttributes(ButtplugDeviceMessageType.VibrateCmd) || !device.messageAttributes(ButtplugDeviceMessageType.VibrateCmd).featureCount) {
+      return 0;
+    }*/
+    return device!.messageAttributes(ButtplugDeviceMessageType.VibrateCmd)!.featureCount!;
   }
 }
