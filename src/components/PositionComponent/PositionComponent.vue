@@ -1,6 +1,6 @@
 <template>
   <div class="position-control">
-    <h2>{{ device.name }} - Position Control</h2>
+    <h2>{{ device.Name }} - Position Control</h2>
     <vue-slider ref="positionSlider"
                 :real-time="true"
                 v-model="positionValue"

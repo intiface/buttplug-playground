@@ -58,7 +58,7 @@ export default class PositionComponent extends Vue {
         this.onOscillationTick();
         return;
       }
-      await this.device.linear(this.timeValue * 1000, this.positionValue[this.goalPositionIndex] * 0.01);
+      await this.device.linear(this.positionValue[this.goalPositionIndex] * 0.01, this.timeValue * 1000);
 
       // flip goal position index
       this.goalPositionIndex ^= 1;
