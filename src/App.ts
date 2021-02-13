@@ -70,10 +70,9 @@ export default class App extends Vue {
   }
 
   private numVibrators(device: ButtplugClientDevice): number {
-    /*
     if (device || !device.messageAttributes(ButtplugDeviceMessageType.VibrateCmd) || !device.messageAttributes(ButtplugDeviceMessageType.VibrateCmd).featureCount) {
       return 0;
-    }*/
+    }
     return device!.messageAttributes(ButtplugDeviceMessageType.VibrateCmd)!.featureCount!;
   }
 }
