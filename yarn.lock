@@ -797,10 +797,10 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
-buttplug@1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/buttplug/-/buttplug-1.0.8.tgz#c924d93d664cc003682b9ce9d9d7b07f7e7e7a37"
-  integrity sha512-bKuwsqVHElc88IJBk2N5vhhyQMpcDppzkXffiMJfbQIpU7y5SJOb//E5KCD7DeGDjTGqm9RBPJ0DYe+gSEftEQ==
+buttplug@1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/buttplug/-/buttplug-1.0.10.tgz#c18bc21a6946c099fdea88fd61a930197684336e"
+  integrity sha512-RUx74ZHz+IuL8hA7K1rMCiWikzfD7GlimSye0nzzBtda/0fvHExyFurFbF+mEvjqimT17KgH8XLOyIRjvMxmzw==
   dependencies:
     protobufjs "^6.10.2"
 
@@ -2982,19 +2982,6 @@ map-visit@^1.0.0:
   resolved "https://registry.yarnpkg.com/map-visit/-/map-visit-1.0.0.tgz#ecdca8f13144e660f1b5bd41f12f3479d98dfb8f"
   dependencies:
     object-visit "^1.0.0"
-
-markdown-loader@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/markdown-loader/-/markdown-loader-6.0.0.tgz#7f8d40ee98b32d3bb8c5387d58e679600d3edeaa"
-  integrity sha512-kUTEEpWRc5zcQbdjpK0QYdp/9Z5Oep440foKSXc7wWetcRxrWm4vbbXRW0Gqhht5CKJ4gm7el4HOPPyqs/ziTA==
-  dependencies:
-    loader-utils "^1.2.3"
-    marked "^0.7.0"
-
-marked@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-0.7.0.tgz#b64201f051d271b1edc10a04d1ae9b74bb8e5c0e"
-  integrity sha512-c+yYdCZJQrsRjTPhUx7VKkApw9bwDkNbHUKo1ovgcfDjb2kc8rLuRbIFyXL5WOEUwzSSKo3IXpph2K6DqB/KZg==
 
 matomo-tracker@^2.2.4:
   version "2.2.4"
